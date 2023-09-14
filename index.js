@@ -1,4 +1,4 @@
-var canvas=document.getElementById("my_screen");
+п»їvar canvas=document.getElementById("my_screen");
 var content=canvas.getContext("2d");
 var xCenter=canvas.width/2;
 var yCenter=canvas.height/2;
@@ -32,7 +32,7 @@ function build(){
     }
     
     var len=(minLength+maxLength)/2;
-    var a_plus_b=len/Math.PI;//сумма полуосей a+b
+    var a_plus_b=len/Math.PI;//СЃСѓРјРјР° РїРѕР»СѓРѕСЃРµР№ a+b
     var a=a_plus_b/(1+k);
     var c=e*a;
     //var massstab=canvas.width/(2*a);
@@ -85,7 +85,7 @@ function build(){
     content.beginPath();
     content.strokeStyle="blue";
     content.font="18px Arial";
-    content.strokeText(knot+" мм. - звено",xCenter+110,yCenter-10);
+    content.strokeText(knot+" РјРј. - Р·РІРµРЅРѕ",xCenter+110,yCenter-10);
     content.stroke();
 
    
@@ -142,9 +142,9 @@ function build(){
     var knot=12.7;
     var e=document.getElementById("e").value;
     document.getElementById("displayE").innerHTML=e;
-    var k=Math.sqrt(1-Math.pow(e,2));//коэффициент сжатия k=b/a
+    var k=Math.sqrt(1-Math.pow(e,2));//РєРѕСЌС„С„РёС†РёРµРЅС‚ СЃР¶Р°С‚РёСЏ k=b/a
     document.getElementById("displayK").innerHTML=k;
-    var minLength=count*knot/2;//длина в дюймах
+    var minLength=count*knot/2;//РґР»РёРЅР° РІ РґСЋР№РјР°С…
     var maxLength=minLength*4;
     engine=setInterval(build,40);
 }
