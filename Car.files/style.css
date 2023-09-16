@@ -1,1 +1,43 @@
+#direction{
+	display:inline-block;
+	border:1px solid black;
+	vertical-align:bottom;
+	margin-right:190px;
+}
 
+#feet{
+	display:inline-block;
+	width:160px;
+	height:100px;
+	border:1px solid blue;
+	vertical-align:top;
+}
+
+#steering{
+	margin-right:300px;
+	margin-top:-120px;
+}
+
+#my_screen{
+	border:3px solid black;
+	border-radius:15px;
+}
+
+#bottom{
+	text-align:center;
+	vertical-align:top;
+}
+
+div.foot{
+	height:90px;
+	width:40px;
+	border-radius:5px;
+	border:1px solid black;
+	display:inline-block;
+	vertical-align:top;
+}
+
+button.middle-button{
+	margin-left:16px;
+	margin-right:16px;
+}
