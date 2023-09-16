@@ -1,0 +1,484 @@
+﻿<html>
+
+<head>
+
+<meta charset="UTF-8"/>
+<link rel="stylesheet" href="Car.files/style.css">
+<title>Как я катался на машине</title>
+<script>
+
+	car_width=84;
+	car_length=135;
+	wheel_r=45;
+	wheel_width=12;
+
+	steering_angle=0;
+	
+	zero={x:0,y:0};
+
+	point=zero;
+
+	moveTo=function(where){
+		B.moveTo(where.x,where.y);
+		point=where;
+	};
+
+
+
+	lineTo=function(where){
+		B.lineTo(where.x,where.y);
+		point=where;
+	};
+
+
+
+
+
+
+	line=function(angle,distance){
+		var x=point.x+distance*Math.cos(angle);
+		var y=point.y+distance*Math.sin(angle);
+		point={x:x,y:y};
+		B.lineTo(point.x,point.y);
+	}
+
+
+	move=function(angle,distance){
+		var x=point.x+distance*Math.cos(angle);
+		var y=point.y+distance*Math.sin(angle);
+		point={x:x,y:y};
+		B.moveTo(point.x,point.y);
+	}
+
+	
+
+
+	wheel_angle=function(steering_angle){
+		return steering_angle/6;
+	}
+
+
+	turn_radius=function(){
+		if(rear_engine){
+			return car_length/Math.tan(wheel_angle(steering_angle));
+		}
+		return car_length/Math.sin(wheel_angle(steering_angle));
+	}
+
+
+	var real_speed=function(){
+		return speed*(document.getElementById("accelerator").style.marginTop=="10px"?2:0);
+	}
+	
+	angle=0.1;
+
+
+	engine_point={x:50,y:200};
+
+	motion=function(){
+		var real_angle=angle+wheel_angle(steering_angle);
+		var delta=(turn_radius()===Infinity?0:Math.atan(real_speed()/turn_radius()));
+		var abs=real_speed()/Math.sin(Math.PI/2+delta/2)*Math.sin(Math.PI/2-delta);
+		var new_angle=real_angle+delta;
+		var speed={x:abs*Math.sin(new_angle),y:-abs*Math.cos(new_angle)};
+		angle+=delta;
+		engine_point.x+=speed.x;
+		engine_point.y+=speed.y;
+	}
+
+	var rear_engine=false;
+
+	draw_car=function(){
+		B.fillStyle="white";
+		B.fillRect(0,0,A.width,A.height)
+		B.beginPath();
+		
+
+
+		var wheel=function(center,steering_angle){
+			B.fillStyle="brown";
+			var real_angle=angle+Math.PI/2+wheel_angle(steering_angle);
+			B.beginPath();
+			moveTo(center);
+			move(real_angle,R);
+			line(real_angle+Math.PI/2,wheel_width/2);
+			line(real_angle+Math.PI,R*2);
+			line(real_angle+3*Math.PI/2,wheel_width);
+			line(real_angle,R*2);
+			B.closePath();
+			B.stroke();
+			B.fill();
+		};
+
+
+
+		moveTo(engine_point);
+
+		if(!rear_engine){
+			move(angle+Math.PI/2,car_length);	
+		}
+
+		var car_point=point;
+
+		line(angle,car_width/2);
+		var left_rear=point;
+		line(angle-Math.PI/2,car_length);
+		var left_fore=point;
+		move(angle-Math.PI,car_width);
+		var right_fore=point;
+		line(angle-3*Math.PI/2,car_length);
+		var right_rear=point;
+		
+		B.stroke();
+
+		if(rear_engine){
+			B.beginPath();
+			B.arc(car_point.x,car_point.y,10,0,2*Math.PI);
+			B.closePath();
+			B.stroke();
+		}
+		var left;
+		var right;
+		var le;
+		var ri;
+
+		
+		var fore_window=function(){
+
+			
+
+			B.beginPath();
+			B.strokeStyle="black";
+			B.arc(car_point.x,car_point.y,car_width*1.51,angle-Math.PI/2-0.5,angle-Math.PI/2+0.5);
+			B.stroke();
+			B.beginPath();
+			B.arc(car_point.x,car_point.y,car_width*1,angle-Math.PI/2-0.4,angle-Math.PI/2+0.4);
+			B.stroke();
+			/*
+			B.beginPath();
+			moveTo(car_point);
+			move(angle-Math.PI/2,car_width*1);
+			line(angle-Math.PI/2,car_width*0.5);
+			B.stroke();
+			*/
+			B.beginPath();
+			B.strokeStyle="red";
+			moveTo(car_point);
+			line(angle+Math.PI,car_width*2/5);
+			le=point;
+			line(angle+3*Math.PI/2,car_length*4/7);
+			left=point;
+			B.stroke();
+			B.beginPath();
+			moveTo(car_point);
+			line(angle,car_width*2/5);
+			ri=point;
+			line(angle-Math.PI/2,car_length*4/7);
+			right=point;
+			B.stroke();
+
+			B.beginPath();
+			B.strokeStyle="black";
+			moveTo(right);
+			line(angle-1.4,car_width*0.5);
+			var ri1=point;
+			moveTo(left);
+			line(angle+1.4-Math.PI,car_width*0.5);
+			var le1=point;
+			B.stroke();
+		}
+		fore_window();
+		B.strokeStyle="red";
+
+		var roof=function(){
+			B.beginPath();
+			B.strokeStyle="red";
+			moveTo(ri);
+			line(angle+1.3,car_width*0.4);
+			rear_ri=point;
+			moveTo(le);
+			line(angle+Math.PI-1.3,car_width*0.4);
+			lineTo(rear_ri);
+			B.stroke();			
+		}
+		
+		roof();
+
+		
+
+
+		moveTo(left_fore);
+		line(angle+1.4-Math.PI,car_width*0.5);
+		var r=point;
+		moveTo(right_fore);
+		line(angle-1.4,car_width*0.5);
+		lineTo(r);
+		
+		B.stroke();
+
+		var R=20;
+		B.strokeStyle="black";
+
+		wheel(left_fore,steering_angle);
+		wheel(right_fore,steering_angle);
+	
+		wheel(left_rear,0);
+		wheel(right_rear,0);
+		
+	}
+
+
+
+
+
+	turn=function(point,angle){
+		dx=point.x-x0
+		dy=point.y-y0
+		dx1=dx*Math.cos(angle)-dy*Math.sin(angle)
+		dy1=dx*Math.sin(angle)+dy*Math.cos(angle)
+		return {x:x0+dx1,y:y0+dy1}
+	}
+
+
+
+	T=0;
+
+	
+
+	frame=function(){
+		B.clearRect(0,0,A.width,A.height);
+		motion();
+		draw_car();
+	}
+
+
+	draw_direction=function(){
+		var r=10;
+		var ca=document.getElementById("direction-canvas");
+		var co=ca.getContext("2d");
+		co.fillStyle="white";
+		co.fillRect(0,0,ca.width,ca.height);
+		co.moveTo(0.1*ca.width,ca.height/2);
+		co.lineTo(0.9*ca.width,ca.height/2);
+		co.moveTo(0.1*ca.width,r);
+		co.lineTo(0.1*ca.width,ca.height-r);
+		co.moveTo(0.5*ca.width,r);
+		co.lineTo(0.5*ca.width,ca.height-r);
+		co.moveTo(0.9*ca.width,r);
+		co.lineTo(0.9*ca.width,ca.height-r);
+		co.stroke();
+		var x;
+		var y;
+		
+		switch(speed){
+			case 0:
+			x=ca.width/2;
+			y=ca.height/2;
+			break;
+			case 1:
+			x=r;
+			y=r;
+			break;
+			case -1:
+			x=ca.width-r;
+			y=ca.height-r;
+			break;
+			case 2:
+			x=r;
+			y=ca.height-r;
+			break;
+			case 3:
+			x=ca.width/2;
+			y=r;
+			break;
+			case 4:
+			x=ca.width/2;
+			y=ca.height-r;
+			break;
+			case 5:
+			x=ca.width-r;
+			y=r;
+		}
+		co.fillStyle="black";
+		co.beginPath();
+		co.arc(x,y,r,0,2*Math.PI);
+		co.closePath();
+		co.fill();
+		co.stroke();
+	}
+
+
+	
+	
+</script>
+</head>
+
+<body>
+
+	Ниже вашему вниманию представлена одна из статей с <a href="/">сайта</a>:
+	матмодель управления автомобилем с механической
+	коробкою передач.<br/>
+	Роль газа выполняет клавиша курсора "Вверх".
+	<center>
+	<canvas width="1024" height="400" id="my_screen"></canvas>
+	<br/>
+	<canvas id="steering"></canvas>
+	</center>
+	
+	<div id="bottom">
+	<div id="feet">
+		<div class="foot">Сцеп</div>
+		<div class="foot">Торм</div>
+		<div class="foot" id="accelerator">Газ</div>
+	</div>
+	<div id="direction">
+	Передачи
+	<div><button onclick='change_speed(1);'>1</button><button class="middle-button" onclick='change_speed(3);'>3</button><button onclick='change_speed(5);'>5</button></div>
+	<canvas width="100" height="100" id="direction-canvas"></canvas>
+	<div><button onclick='change_speed(2);'>2</button><button class="middle-button" onclick='change_speed(4);'>4</button><button onclick='change_speed(-1);'>R</button></div>
+	</div>
+	</div>
+</body>
+
+<script>
+	var speed;
+	A=document.getElementById("my_screen")
+	B=A.getContext("2d")
+	steering_canvas=document.getElementById("steering");
+	steering_canvas.width=300;
+	steering_canvas.height=300;
+	steering_context=steering_canvas.getContext("2d");
+
+	change_speed=function(s){
+		if(speed==s){
+			speed=0;
+		}
+		else{
+			speed=s;
+		}
+		draw_direction();
+	}
+
+	change_speed(0);
+
+
+	draw_steering=function(){
+		steering_context.clearRect(0,0,steering_canvas.width,steering_canvas.height);
+
+		var x0=steering_canvas.width/2;
+		var y0=steering_canvas.height/2;
+		var r=steering_canvas.width/2;
+		var little_r=r-steering_canvas.width/10;
+
+
+
+		left_angle=Math.PI*(-1/2-0.8)+steering_angle;
+		right_angle=Math.PI*(-1/2+0.8)+steering_angle;
+		
+
+		
+		steering_context.beginPath();
+		steering_context.moveTo(x0,y0);
+		
+		steering_context.lineTo(x0+Math.cos(left_angle)*r,y0+Math.sin(left_angle)*r);
+		
+		steering_context.moveTo(x0,y0);
+		steering_context.lineTo(x0+Math.cos(right_angle)*r,y0+Math.sin(right_angle)*r);
+		steering_context.stroke();
+
+		
+		var delta=1.19;
+		var left_angle1=left_angle+delta;
+		var right_angle1=right_angle-delta;
+		draw_triangle=function(){
+			steering_context.beginPath();
+			steering_context.fillStyle="gray";
+			steering_context.moveTo(x0+Math.cos(left_angle1)*r,y0+Math.sin(left_angle1)*r);
+			steering_context.lineTo(x0+Math.cos(right_angle1)*r,y0+Math.sin(right_angle1)*r);
+			steering_context.lineTo(x0+Math.cos(steering_angle+Math.PI/2)*steering_canvas.width/10,y0+Math.sin(steering_angle+Math.PI/2)*steering_canvas.width/10);
+			steering_context.closePath();
+				steering_context.fill();
+		}
+		draw_triangle();
+
+		draw_side=function(){
+			steering_context.beginPath();
+			steering_context.fillStyle="black";
+			steering_context.arc(x0,y0,r,left_angle,right_angle,false);
+			steering_context.arc(x0,y0,little_r,right_angle,left_angle,true);
+			steering_context.closePath();
+			steering_context.stroke();
+			steering_context.fill();
+		}
+
+		draw_side();
+
+
+		draw_up=function(){
+			steering_context.beginPath();
+			steering_context.fillStyle="red";
+			steering_context.arc(x0,y0,little_r,left_angle1,right_angle1,false);
+			steering_context.arc(x0,y0,r,right_angle1,left_angle1,true);
+			steering_context.closePath();
+			steering_context.stroke();
+			steering_context.fill();
+		}
+
+		draw_up();
+
+		
+		draw_center=function(){
+			steering_context.beginPath();
+			steering_context.fillStyle="white";
+			steering_context.arc(x0,y0,steering_canvas.width/10,0,2*Math.PI);
+			steering_context.closePath();
+			steering_context.stroke();
+			steering_context.fill();
+		};
+		draw_center();
+
+	}
+
+	document.body.onkeydown = function(e){
+						var c = e.keyCode - 36;
+						
+						var forward=(c===2);
+						var back=(c===4);
+
+						if(forward){
+							
+						}
+
+						switch(c){
+							case 2:
+							document.getElementById("accelerator").style.marginTop="10px";
+							return;
+							case 3:
+							if(wheel_angle(steering_angle+0.1)<=Math.PI/2) steering_angle+=0.1;
+							draw_steering();
+							return;
+							case 1:
+							if(wheel_angle(steering_angle-0.1)>=-Math.PI/2) steering_angle-=0.1;
+							draw_steering();
+						}
+	};
+
+
+
+	document.body.onkeyup = function(e){
+						var c = e.keyCode - 36;
+						
+						switch(c){
+							case 2:
+							document.getElementById("accelerator").style.marginTop="0";
+						}
+	};
+
+
+	draw_steering();
+	engine=setInterval(frame,40);
+
+	
+</script>
+
+</html>
