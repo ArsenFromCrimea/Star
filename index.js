@@ -85,7 +85,7 @@ function build(){
     content.beginPath();
     content.strokeStyle="blue";
     content.font="18px Arial";
-    content.strokeText(knot+" мм. - звено",xCenter+110,yCenter-10);
+    content.strokeText(knot+" мм. - ланка ланцюга",xCenter+110,yCenter-10);
     content.stroke();
 
    
