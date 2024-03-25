@@ -5,10 +5,15 @@
     var languages=['ENG','DEU'];
     function open(language){
       var otherLanguage=languages[1-languages.indexOf(language)];
-      document.getElementById(language).style.display='block';
-      document.getElementById(otherLanguage).style.display='none';
-      document.getElementById(language+'-button').style.disabled=true;
-      document.getElementById(otherLanguage+'-button').style.disabled=null;
+      for(var i in languages){
+        if (i==language){
+          document.getElementById(i).style.display='block';
+          document.getElementById(i+'-button').style.disabled=true;
+        }else{
+          document.getElementById(i).style.display='none';
+          document.getElementById(otherLanguage+'-button').style.disabled=null;
+        }
+      }
     }
   </script>
   
