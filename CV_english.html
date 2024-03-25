@@ -7,8 +7,8 @@
       var otherLanguage=languages[1-languages.indexOf(language)];
       document.getElementById(language).style.display='block';
       document.getElementById(otherLanguage).style.display='none';
-      document.getElementById(language+'-button').style.display='block';
-      document.getElementById(otherLanguage+'-button').style.display='none';
+      document.getElementById(language+'-button').style.disabled=true;
+      document.getElementById(otherLanguage+'-button').style.disabled=null;
     }
   </script>
   
