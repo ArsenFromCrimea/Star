@@ -5,19 +5,19 @@
     var languages=['ENG','DEU'];
     function openL(language){
       for(var i=0;i<languages.length;i++){
-        if (languages[i]==language){
+        if (i==language){
           document.getElementById(languages[i]).style.display='block';
-          document.getElementById(languages[i]+'-button').style.disabled=true;
+          document.getElementById(i+'-button').style.disabled=true;
         }else{
           document.getElementById(languages[i]).style.display='none';
-          document.getElementById(languages[i]+'-button').style.disabled=null;
+          document.getElementById(i+'-button').style.disabled=null;
         }
       }
     }
     function fillLanguages(){
       var s='';
-      for(var i in languages){
-        s+='<button onclick="openL('+"'"+i+"'"+')" id="'+i+'-button">'+i+'</button>'
+      for(var i=0;i<languages.length;i++){
+        s+='<button onclick="openL('+"'"+i+"'"+')" id="'+i+'-button">'+languages[i]+'</button>'
       }
       document.getElementById('languages').innerHTML=s;
     }
