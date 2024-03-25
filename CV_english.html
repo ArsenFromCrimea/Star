@@ -1,8 +1,18 @@
 <html>
 <head>
-<title>About me</title>
+  <title>About me</title>
+  <script>
+    var languages=['ENG','DEU'];
+    function open(language){
+      document.getElementById(language).style.display='block';
+      document.getElementById(languages[1-languages.indexOf(language)]).style.display='block';
+    }
+  </script>
+  
 </head>
-<body>
+<body onload="open('DEU');">
+  <button value='ENG' onclick="open('ENG')"/>
+<div id='English'>
 <p>
 <a href=".">My</a> name is Pan, Arsen Pan. <a href="mailto:panarsen@gmail.com">panarsen@gmail.com</a>
 </p>
@@ -72,5 +82,21 @@ As it is visible for you, not any serious scientifical intelligencies were provi
 and seldom programming exercises, which are provided by me sometimes despite of lack of IT-work, are linked with the "smart-house" technologies,
 it caused by need of supplement of the village house (I feel myself like I. Musk on a exterrial planet).
 </pre>
+</div>
+   <button value='DEU' onclick="open('DEU')"/>
+  <div id='German'>
+<h2>Arsen Pan, der Lebenslauf. Ukraine, 25.III.2024</h2>
+<p>
+Ich bin geboren im Kasachstan am 18. Oktober 1975. Mutter schied sich mit dem Vater (ich sah ihn nimmer mehr), und wenn ich 2 Jahre alt war, wurde ich nach Halbinsel Krim gebracht, wo ich wurde von Großeltern weiter erzogen. Damals lag es alles in einem Territorium, in der UdSSR.
+Oma und Opa waren ehemalige Lehrer, wodurch wurde ich in die dortige Schule beim Alter 5 Jahre alt angenommen und galt selbstverständlich als einer von den besten Schülern, Mein Onkel (ihrer Sohn) war älter, als ich, um 18 Jahren und arbeitete an einer Arbeit, die mit Computer etwas zu tun hat, und er brachte mir erste Kenntnisse in diesem Bereich bei. Damals existierten kleine Rechner schon, die programmierbar waren (sowjetische Nachahmung der amerikanischen 'Texas Instruments' usw.), die Großeltern kauften mir einer, und auf dieser Weise früh begrief ich die Kunst des Programmierens. Natürlich, wurde es zu meiner Leidenschaft. Die Sprache, die für solche Geräte angewandt wurde, war der Sprache 'Assembler' ähnlich. Von selbst, mit Hilfe der Büchern, habe ich die Sprache 'Pascal' begreifen, obwohl es kaum ein Gerät gab, um sie praktisch zu probieren. In den letzten Jahren der UdSSR bekam die Schule Computer, die mit richtigem Bildschirm und mit der Sprache 'Basic' ausgestattet wurden. Es war ein großer Fortschritt. Mir gefiel es, einfache Animation auf dem farbigen Bildschirm zu schaffen (z. B., ein Kolbenmotor, oder ein rührende um die Sonne Planet, der von selbst einen eigenen Trabant hat).
+</p>
+Nach der Schule wurde ich an die Uni immatrikuliert, an die Fakultät der angewandten Mathematik. Ich studierte dort ab 1991 bis 1996 und wegen schlechter ökonomischen Situation kehrte nach das Dorf zurück, wo ich bis das Ende des Jahrhunderts an der Schule arbeitete, an dieselber Schule, wo ich vor einigen Jahren von selbst studierte. Parallel kaufte ich mir den ersten Computer mit dem Betriebsystem 'MS DOS'. Ich schrieb auf 'Pascal' Tests für Schüler, so gesagt, schrieb ich das Ding, das man 'neuronale Netz' heute nennt. Es war, ja, viel interessanter für mich, als der Unterricht. Dabei begrief ich das objektorientierte Programmieren (die Version 'Turbo Pascal 5.5' unterstützte es schon).
+Irgendwo am Beginn des XXI. Jahrhunderts bewies ich irgendeines Theorem, und wurde von einem Professor, der mich in den 90-er Jahre lehrte, in die Aspirantur immatrikuliert, das bedeutete eine Stufe zur Promotion zum Grad Ph.D. Das leistete mir ein Stipendium und ich steuerte mich zum wissenschaftlichen Leben. Parallel unterrichtete ich Studenten (Mathematik, Informatik). Inzwischen lernte ich die mehr modernen Sprachen: Java und JS kennen.
+<p>
+Nach der Aspirantur (wo ich die deutsche Sprache übrigens studierte) verlängerte meine Promotion. Umstände enwickelten sich nicht toll und Leute um mich zögerten, also plötzlich 2014 kam die russische Besatzungsmacht heran. Diese Veränderung beschädigte Verbindungen mit Kyjiw und ließ keine Chance mir ein Wissenschaftler zu werden. Ich kann mich selbst nicht weiter belügen, verließ die Uni und versuchte ins Programmieren als Beruf einzusteigen. Ja, eine Firma nahm mich, aber später verstand ich, dass dieser Job mich nicht sehr steigerte. Ganze Zeit war ich mit sogenannten 'Bugs' beschäftigt. Ja, meine Tätigkeit war intellektuel, mir gefiel es, den Leuten Hilfe zu leisten, aber diese App für eine russische Bank war schon alt, z. B., sie benutzte die 8. Version der Sprache Java (bugs in JS und Oracle bearbeitete ich auch, aber kann mich nich mehr erinnern, wie alt sie waren). Kurz gesagt, wenn diese App veraltet wurde, die Firma ließ mich frei (gab mir $1000 und bat um die Verzeihung). Ich kann mich nicht sehr über diese Zeit beschweren, denn ich so ein Ding, wie Git, inzwischen studiert habe, SQL auch.
+Ich spaziere 2 Monaten arbeitslos und wurde in eine Firma eingeladet, wo meine ehemalige Studenten einen Finger im Spiel haben. Der Chef bietete mir eine kleine Lohnung aber gab mir die Hoffnung, dass das neue Projekt erfolgreich in Bewegung kommt, und ich als einer von führeneden Mitarbeiter dort gelten werde. Ich studierte Python, es war Jahr 2019. Da kennenlernte ich richtige neuronale Netze. Das Projekt scheiterte, aber der Chef bietete mir ihm bei Animation helfen. So kehrte ich zu dem Hobby aus der Schulzeit. Aber auf neuem Niveau: es handelte um 3D-Animation. Eine Schnittstelle 'OpenGL'. Da waren meine mathematische Kenntnisse benutzbar, denn der Begriff 'Tensor' spielte die Hauptrole. Wir schriebten in der Sprache JS, die war mir schon gut bekannt und alles schien zu klappen. Die Käufer waren Unternehmer, die diese Animationen für Werbung benutzten. Aber im Oktober lief etwas schief und der Chef feuerte mich (er war eine sehr impulsive Person).
+</p>
+Seit dieser Zeit arbeitete ich nirgends. Die Lage, in die Russland unsere Halbindel setzte, begrenzte schon die Möglichkeit, intelektuelle Arbeit zu finden. Ich verdiente etwas Geld als Nachhelfer (in Mathematik und Informatik) und lebte im Dorf, wo Technik und das Grundstück zur meine Hobby wurde. Seit dem Beginn des grosses Kriegs 2022 begann ich meine Flucht nach die BRD vorzubereiten. 
+  </div>
 </body>
 </html>
