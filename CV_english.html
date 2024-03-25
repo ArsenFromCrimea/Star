@@ -14,11 +14,19 @@
         }
       }
     }
+    function fillLanguages(){
+      var s='';
+      for(var i in languages){
+        s+='<button onclick="openL('+"'"+i+"'"+')" id="'+i+'-button">'+i+'</button>'
+      }
+      document.getElementById('buttons').innerHTML=s;
+    }
   </script>
   
 </head>
-<body onload="">
+<body onload="fillLanguages();">
   <button onclick="openL('ENG')" id='ENG-button'>ENG</button>
+  <div id=languages></div>
 <div id='ENG'>
 <p>
 <a href=".">My</a> name is Pan, Arsen Pan. <a href="mailto:panarsen@gmail.com">panarsen@gmail.com</a>
