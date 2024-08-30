@@ -73,16 +73,21 @@ function reaction(i,j){
 	}
 	if(check(i-2,j,sp)&&check(i-1,j,'*')){
 		movebutton(i-2,j,i,j);
+		return;
 	}
 	if(check(i+2,j,sp)&&check(i+1,j,'*')){
 		movebutton(i+2,j,i,j);
+		return;
 	}
 	if(check(i,j-2,sp)&&check(i,j-1,'*')){
 		movebutton(i,j-2,i,j);
+		return;
 	}
 	if(check(i,j+2,sp)&&check(i,j+1,'*')){
 		movebutton(i,j+2,i,j);
+		return;
 	}
+	alert('Was machst du?');
 }
 
 
@@ -122,7 +127,7 @@ function start(){
 </head>
 <body onload="start()">
 
-<h3>Das Ziel ist die Anzahl von Sternen zu minimieren</h3>
+<h3>Das Ziel ist die Anzahl von Sternen zu minimieren.</h3>
 <!--canvas id="my-screen" height="1000" width="700"/-->
 Die Anzahl von Sternen = <span id='my-screen'></span>
 <table border='1' id='my-table'>
