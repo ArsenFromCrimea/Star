@@ -22,48 +22,50 @@ function check0(i,j){
 function deletebutton(i,j){
 	var b=document.getElementById(buttonname(i,j));
 	if(b.innerHTML=='*'){
-		b.innerHTML=sp;
+		removebutton(i,j);
+		count--;
+		refresh();
 		return true;
 	}
 	return false;
 }
 
+function removebutton(i,j){
+	var b=document.getElementById(buttonname(i,j));
+	b.innerHTML=sp;
+	b.disabled='true';
+}
+
 function movebutton(i,j){
 	var b=document.getElementById(buttonname(i,j));
 	b.innerHTML='*';
+	b.disabled=null;
 }
 
 function refresh(){
 	document.getElementById('my-screen').innerHTML=count;
 }
 
-function copybutton(i,j){
+function reaction(i,j){
 	if(check0(i-2,j)&&deletebutton(i-1,j)){
 		movebutton(i-2,j);
-		return true;
+		return;
 	}
 	if(check0(i+2,j)&&deletebutton(i+1,j)){
 		movebutton(i+2,j);
-		return true;
+		return;
 	}
 	if(check0(i,j-2)&&deletebutton(i,j-1)){
 		movebutton(i,j-2);
-		return true;
+		return;
 	}
 	if(check0(i,j+2)&&deletebutton(i,j+1)){
 		movebutton(i,j+2);
-		return true;
+		return;
 	}
-	return false;
 }
 
-function reaction(i,j){
-	if(copybutton(i,j)){
-		deletebutton(i,j);
-		count--;
-		refresh();
-	}
-}
+
 
 var count=32;
 
@@ -73,7 +75,7 @@ function start(){
 	var tab=document.getElementById("my-table");
 	var code='';
 	const c=7;
-	refresh();
+	
 	
 
 	for(var i=0;i<c;i++){
@@ -82,11 +84,7 @@ function start(){
 			code+='<td>';
 			if(i>1&&i<c-2||j>1&&j<c-2){
 				code+='<button onclick="reaction('+i+','+j+')" id="'+buttonname(i,j)+'">';
-				if(i==parseInt(c/2)&&j==parseInt(c/2)){
-					code+=sp;
-				}else{
-					code+='*';
-				}
+				code+='*';
 				code+='</button>';
 			}else{
 				
@@ -97,6 +95,8 @@ function start(){
 		code+='</tr>';
 	}
 	tab.innerHTML=code;
+	removebutton(parseInt(c/2),parseInt(c/2));
+	refresh();
 }	
 </script>
 </head>
@@ -104,7 +104,7 @@ function start(){
 
 <h3>Das Ziel ist die Anzahl von Sternen zu minimieren</h3>
 <!--canvas id="my-screen" height="1000" width="700"/-->
-<span id='my-screen'></span>
+Die Anzahl von Sternen = <span id='my-screen'></span>
 <table border='1' id='my-table'>
 </table>
 </body>
