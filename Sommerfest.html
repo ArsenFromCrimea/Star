@@ -36,10 +36,11 @@ function removebutton(i,j){
 	b.disabled='true';
 }
 
-function movebutton(i,j){
+function movebutton(i,j,i0,j0){
 	var b=document.getElementById(buttonname(i,j));
 	b.innerHTML='*';
 	b.disabled=null;
+	removebutton(i0,j0);
 }
 
 function refresh(){
@@ -48,23 +49,19 @@ function refresh(){
 
 function reaction(i,j){
 	if(check0(i-2,j)&&deletebutton(i-1,j)){
-		movebutton(i-2,j);
-		removebutton(i,j);
+		movebutton(i-2,j,i,j);
 		return;
 	}
 	if(check0(i+2,j)&&deletebutton(i+1,j)){
-		movebutton(i+2,j);
-		removebutton(i,j);
+		movebutton(i+2,j,i,j);
 		return;
 	}
 	if(check0(i,j-2)&&deletebutton(i,j-1)){
-		movebutton(i,j-2);
-		removebutton(i,j);
+		movebutton(i,j-2,i,j);
 		return;
 	}
 	if(check0(i,j+2)&&deletebutton(i,j+1)){
-		movebutton(i,j+2);
-		removebutton(i,j);
+		movebutton(i,j+2,i,j);
 		return;
 	}
 }
@@ -85,13 +82,14 @@ function start(){
 	for(var i=0;i<c;i++){
 		code+='<tr>';
 		for(var j=0;j<c;j++){
-			code+='<td>';
+			
 			if(i>1&&i<c-2||j>1&&j<c-2){
+				code+='<td bgcolor="white">';
 				code+='<button onclick="reaction('+i+','+j+')" id="'+buttonname(i,j)+'">';
 				code+='*';
 				code+='</button>';
 			}else{
-				
+				code+='<td bgcolor="yellow">';
 			}
 			code+='</td>';
 		
