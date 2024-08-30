@@ -11,23 +11,11 @@ function buttonname(i,j){
 var sp='&nbsp;'
 
 
-function check0(i,j){
-	var b=document.getElementById(buttonname(i,j));
-	if(b){
-		return b.innerHTML==sp;
-	}
-	return false;
-}
 
-function deletebutton(i,j){
+
+function check(i,j,sign){
 	var b=document.getElementById(buttonname(i,j));
-	if(b.innerHTML=='*'){
-		removebutton(i,j);
-		count--;
-		refresh();
-		return true;
-	}
-	return false;
+	return b!=null&&b.innerHTML==sign;
 }
 
 function removebutton(i,j){
@@ -36,33 +24,64 @@ function removebutton(i,j){
 	b.disabled='true';
 }
 
-function movebutton(i,j,i0,j0){
+var i0;
+var j0;
+var set=[];
+
+function movebutton(i,j,i0_,j0_){
 	var b=document.getElementById(buttonname(i,j));
-	b.innerHTML='*';
+	set.push(b);
 	b.disabled=null;
-	removebutton(i0,j0);
+	b.innerHTML='?';
+	var b0=document.getElementById(buttonname(i0_,j0_));
+	b0.style.color='red';
+	i0=i0_;
+	j0=j0_;
 }
 
 function refresh(){
 	document.getElementById('my-screen').innerHTML=count;
 }
 
+function escape(){
+	for(var i=0;i<set.length;i++){
+		set[i].innerHTML=sp;
+		set[i].disabled='true';
+	}
+	set=[];
+	var b0=document.getElementById(buttonname(i0,j0));
+	b0.style.color='black';
+}
+
 function reaction(i,j){
-	if(check0(i-2,j)&&deletebutton(i-1,j)){
+	if(set.length>0){
+		var b=document.getElementById(buttonname(i,j));
+		if(check(i,j,'?')){
+			removebutton((i0+i)/2,(j0+j)/2);
+			count--;
+			refresh();
+			removebutton(i0,j0);
+			escape();
+			b.innerHTML='*';
+			b.disabled=null;
+			return;
+		}
+		if(i==i0&&j==j0){
+			escape();
+			return;
+		}
+	}
+	if(check(i-2,j,sp)&&check(i-1,j,'*')){
 		movebutton(i-2,j,i,j);
-		return;
 	}
-	if(check0(i+2,j)&&deletebutton(i+1,j)){
+	if(check(i+2,j,sp)&&check(i+1,j,'*')){
 		movebutton(i+2,j,i,j);
-		return;
 	}
-	if(check0(i,j-2)&&deletebutton(i,j-1)){
+	if(check(i,j-2,sp)&&check(i,j-1,'*')){
 		movebutton(i,j-2,i,j);
-		return;
 	}
-	if(check0(i,j+2)&&deletebutton(i,j+1)){
+	if(check(i,j+2,sp)&&check(i,j+1,'*')){
 		movebutton(i,j+2,i,j);
-		return;
 	}
 }
 
@@ -71,8 +90,7 @@ function reaction(i,j){
 var count=32;
 
 function start(){
-	/*var can=document.getElementById("my-screen");
-	var con=can.getContext("2d");*/
+
 	var tab=document.getElementById("my-table");
 	var code='';
 	const c=7;
@@ -109,5 +127,6 @@ function start(){
 Die Anzahl von Sternen = <span id='my-screen'></span>
 <table border='1' id='my-table'>
 </table>
+<!--button onclick="rotation()">Rotieren</button-->
 </body>
 </html>
