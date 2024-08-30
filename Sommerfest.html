@@ -33,6 +33,7 @@ function movebutton(i,j,i0_,j0_){
 	set.push(b);
 	b.disabled=null;
 	b.innerHTML='?';
+	b.style.color='red';
 	var b0=document.getElementById(buttonname(i0_,j0_));
 	b0.style.color='red';
 	i0=i0_;
@@ -47,6 +48,7 @@ function escape(){
 	for(var i=0;i<set.length;i++){
 		set[i].innerHTML=sp;
 		set[i].disabled='true';
+		set[i].style.color='black';
 	}
 	set=[];
 	var b0=document.getElementById(buttonname(i0,j0));
