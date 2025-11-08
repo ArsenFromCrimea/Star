@@ -5,27 +5,40 @@
 <meta charset="UTF-8"/>
 
 <title>das Leben</title>
+
+<script src="das_Leben.files/Feld.js"></script>
+
 <script>
-	var m=30;
-	var n=30;
+	var m=60;
+	var n=80;
+	const a=10;
+
+
+
 </script>
 
 </head>
 
 <body>
 
-	<canvas width="1024" height="400" id="my_screen">
-
+	<canvas width="" height="400" id="my_screen">
 	</canvas>
+
+
 	
 </body>
 
 <script>
 	var speed;
 	var canvas=document.getElementById("my_screen");
+	canvas.width=n*a;
+	canvas.height=m*a;
 	var context=canvas.getContext("2d");
-	context.moveTo(0,0);
-	context.lineTo(100,100);
+	gitter(m,n);
+	f=new Feld(m,n);
+	f.naechstePhase();
+
+	
 </script>
 
 </html>
