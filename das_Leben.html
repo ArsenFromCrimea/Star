@@ -36,14 +36,28 @@
 	var context=canvas.getContext("2d");
 	gitter(m,n);
 	spiel=new Feld(m,n);
-	spiel.figur(UHR,34,34,"black");
+	spiel.figur(BLINKER,3,2,"blue");
+	spiel.figur(UHR,17,3,"yellow");
+	spiel.figur(KROETE,5,17,"red");
+	spiel.figur(BIPOLE,17,18,"gray");
+	spiel.figur(TRIPOLE,40,2,"green");
+	spiel.figur(PULSATOR,40,15,"cyan");
+	spiel.figur(TUEMMLER,39,34,"red");
+	spiel.figur(OKTAGON,4,42,"yellow");
+	spiel.figur(VERSCHWINDEN,59,44,"green");
+	spiel.figur(GLEITER,50,8,"blue");
+	spiel.figur(WAAGERECHTER_SEGLER,5,53,"cyan");
+	spiel.figur(SEGLER_NACH_LINKS,65,25,"red");
+	spiel.figur(SENKRECHTER_SEGLER,28,1,"black");
+
+
 	zeigen(spiel);
 	var skizze=new Feld(m,n);
 	function ein_kader(){
 		zeigen(spiel);
 		spiel.naechstePhase(skizze);
 	}
-	setInterval(ein_kader,1000);
+	setInterval(ein_kader,300);
 
 	
 </script>

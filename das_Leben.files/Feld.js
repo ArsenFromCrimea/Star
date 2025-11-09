@@ -18,7 +18,7 @@
         for(var i=0;i<m;i++){
 			for(var j=0;j<n;j++){
                 if(spiel.ist_tot(i,j)){
-                    context.fillStyle="red";
+                    context.fillStyle="white";
                 }else{
                     context.fillStyle=spiel.die_farbe(i,j);
                 }
@@ -28,6 +28,10 @@
     }
 
 
+    var BLINKER = [
+		"111"
+    ];
+
     var UHR = [
         "0010",
 		"1100",
@@ -35,6 +39,90 @@
 		"0100"
     ];
 
+    var KROETE = [
+			"0110",
+			"1000",
+			"0001",
+			"0110"
+    ];
+
+    var BIPOLE = [
+			"1100",
+			"1000",
+			"0001",
+			"0011"
+    ];
+
+    var TRIPOLE = [
+			"11000",
+			"10000",
+			"01010",
+			"00001",
+			"00011"
+    ];
+
+    var PULSATOR = [
+			"11111111",
+			"10111101",
+			"11111111"
+    ];
+
+	var TUEMMLER = [
+			"001101100",
+			"000000000",
+			"000101000",
+			"110101011",
+			"111000111"
+    ];
+
+    var OKTAGON = [
+			"00100100",
+			"00100100",
+			"11011011",
+			"00100100",
+			"00100100",
+			"11011011",
+			"00100100",
+			"00100100"
+    ];
+
+    var VERSCHWINDEN = [
+			"111",
+			"101",
+			"101",
+			"000",
+			"101",
+			"101",
+			"111"
+    ];
+    var GLEITER = [
+			"010",
+			"001",
+			"111"
+    ];
+
+    var WAAGERECHTER_SEGLER = [
+			"01111",
+			"10001",
+			"00001",
+			"10010"
+    ];
+	
+	var SEGLER_NACH_LINKS = [
+			"01001",
+			"10000",
+			"10001",
+			"11110"
+    ];
+
+    var SENKRECHTER_SEGLER = [
+			"01010",
+			"00001",
+			"10001",
+			"00001",
+			"01001",
+			"00111"
+    ];
 
     
 			
@@ -54,11 +142,11 @@
         }
 
 
-        figur(figur, y,x, farbe){
+        figur(figur,y,x,farbe){
             for (var i = 0; i < figur.length; i++) {
 			    for (var j = 0; j < figur[0].length; j++) {
 				    if (figur[i].charAt(j) == '1') {
-					    this.bestimmen(j + x, i + y, farbe);
+					    this.bestimmen(i + x, j + y, farbe);
 				    } else {
 					    //this.putzen(j + x, i + y);
 				    }
@@ -72,7 +160,10 @@
         }
         
         die_farbe(i,j){
-            return this.feld[i][j];
+            if(this.ist_innerhalb(i,j)){
+                return this.feld[i][j];
+            }
+            return null;
         }
 
         ist_tot(i,j){
@@ -99,7 +190,7 @@
 				    if (i == y && j == x) {
 					    continue;
 				    }
-				    if (!this.ist_tot(j, i)) {
+				    if (!this.ist_tot(i, j)) {
 					    count++;
 				    }
 			    }
@@ -108,22 +199,40 @@
 	    }
 
 
+        welche_farbe(y,x) {
+            var f
+		    for (var i = y - 1; i <= y + 1; i++) {
+			    for (var j = x - 1; j <= x + 1; j++) {
+				    if (i == y && j == x) {
+					    continue;
+				    }
+                    f=this.die_farbe(i,j);
+				    if (f!=null) {
+					    return f;
+				    }
+			    }
+		    }
+		    return null;
+	    }
+
+
         naechstePhase(skizze){
             skizze.alles_putzen();
             var i
             var j
+            var na
             for(i=0;i<this.m;i++){
                 for(j=0;j<this.n;j++){
-                    n=this.wieviel_nachbarn(i,j);
-                    if(this.ist_tot(i,j)){
-                        if(n==3){
-                            skizze.bestimmen(i,j,"black");
+                    na=this.wieviel_nachbarn(i,j);
+                    if(this.ist_tot(i,j)){ //gebären
+                        if(na==3){
+                            skizze.bestimmen(i,j,this.welche_farbe(i,j));
                         }
                     }else{
-                        if(n==2||n==3){
-                           
+                        if(na==2||na==3){ //überleben
+                            skizze.bestimmen(i,j,this.die_farbe(i,j));
                         }else{
-                            skizze.bestimmen(i,j,"black");
+                            
                         }
                     }
                 }
