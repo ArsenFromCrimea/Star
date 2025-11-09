@@ -35,8 +35,15 @@
 	canvas.height=m*a;
 	var context=canvas.getContext("2d");
 	gitter(m,n);
-	f=new Feld(m,n);
-	f.naechstePhase();
+	spiel=new Feld(m,n);
+	spiel.figur(UHR,34,34,"black");
+	zeigen(spiel);
+	var skizze=new Feld(m,n);
+	function ein_kader(){
+		zeigen(spiel);
+		spiel.naechstePhase(skizze);
+	}
+	setInterval(ein_kader,1000);
 
 	
 </script>
