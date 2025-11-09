@@ -9,6 +9,7 @@
 
 
     function zeigen(spiel){
+        context.strokeStyle="gray";
         for(var i=0;i<m;i++){
 			for(var j=0;j<n;j++){
 				context.strokeRect(j*a,i*a,a,a);
