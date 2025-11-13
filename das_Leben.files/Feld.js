@@ -143,6 +143,38 @@
         }
 
 
+		reset(suppe){
+			this.alles_putzen();
+			if(suppe){
+				for (var y = 0; y < this.m; y++) {
+					for (var x = 0; x < this.n; x++) {
+						if (Math.random() < 0.5) {
+							this.bestimmen(y,x,"black");
+						} else {
+							this.putzen(y,x);
+						}
+					}
+				}
+			}
+			else{
+				this.figur(BLINKER,3,2,"blue");
+				this.figur(UHR,17,3,"yellow");
+				this.figur(KROETE,5,17,"red");
+				this.figur(BIPOLE,17,18,"gray");
+				this.figur(TRIPOLE,40,2,"green");
+				this.figur(PULSATOR,40,15,"cyan");
+				this.figur(TUEMMLER,39,34,"red");
+				this.figur(OKTAGON,4,42,"yellow");
+				this.figur(VERSCHWINDEN,59,44,"green");
+				this.figur(GLEITER,50,8,"blue");
+				this.figur(WAAGERECHTER_SEGLER,5,53,"cyan");
+				this.figur(SEGLER_NACH_LINKS,65,25,"red");
+				this.figur(SENKRECHTER_SEGLER,28,1,"black");
+			}
+			
+		}
+
+
         figur(figur,y,x,farbe){
             for (var i = 0; i < figur.length; i++) {
 			    for (var j = 0; j < figur[0].length; j++) {
