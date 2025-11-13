@@ -180,7 +180,7 @@
             if (i<0) return false;
             if (i>=m) return false;
             if (j<0) return false;
-            if (j>=m) return false;
+            if (j>=n) return false;
             return true;
         }
 
@@ -248,8 +248,8 @@
 
 
         alles_putzen() {
-		    for (var y = 0; y < m; y++) {
-			    for (var x = 0; x < n; x++) {
+		    for (var y = 0; y < this.m; y++) {
+			    for (var x = 0; x < this.n; x++) {
 				    this.putzen(y, x);
 			    }
 		    }
