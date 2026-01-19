@@ -244,7 +244,7 @@ Die Sprache "markdown" hat die Dateiendung .md
 
 <h2>12.VII.2025, Samstag</h2>
 
-Das Lehrbuch ist gekommen.
+Das Lehrbuch ist bei mir angekommen.
 
 
 
@@ -316,6 +316,11 @@ Ich löse Aufgaben für die Fortgeschrittenen.
 das "Ja", das "Aber" - vielleicht immer das Neutrum wendet man für die neue Wörter an?
 </p>
 
+
+<table border="1">
+<tr>
+<td bgcolor="gray">
+
 Angesichts einiger Verben, die in abstraktem Sinn benutzt werden können,
 fällt eine Analogie mit dem berühmten Projekt "Basic English" auf:
 <ol>
@@ -333,10 +338,23 @@ fällt eine Analogie mit dem berühmten Projekt "Basic English" auf:
 <li>finden</li>
 </ol>
 
-<p>
-C gibt die Möglichkeit, Metazeichen für Metazeichen anzuwenden:
-printf("%*.*f",breite,wert)
-</p>
+</td>
+</tr>
+</table>
+
+
+
+
+<table border="1">
+    <tr>
+        <td>
+            C gibt die Möglichkeit, "Metazeichen für Metazeichen" anzuwenden:
+            <pre>
+                printf ( "%*.*f", <b>die_breite</b>, <b>nach_dem_komma</b>, wert )
+            </pre>
+        </td>
+    </tr>
+</table>
 
 
 
@@ -344,14 +362,12 @@ printf("%*.*f",breite,wert)
 Parcing heißt Casting: man kann entweder "implizit" oder "explizit" casten.
 </p>
 
+
 void* - der "universelle" Zeiger
 
 
-
-
-
 <p>
-?...:... - der ternäre Operator
+<b>if</b> ? <b>then</b> : <b>else</b> - der ternäre Operator
 </p>
 
 
@@ -391,10 +407,17 @@ Ein sehr nützlicher Typ "size_t"
 
 <h2>25.VII.2025, Freitag</h2>
 
+<table border="1">
+<tr>
+<td>
 Eine Struktur kann man genauso initialisieren, wie ein Array:
 <pre>
 Koordinate={3,4}
 </pre>
+</td>
+</tr>
+</table>
+
 
 <p>
 Freitag ist ein kurzer Tag an unserer Schule, aus diesem Grund habe ich heute nicht viel Internet in Anspruch genommen.
@@ -1345,21 +1368,35 @@ Rumpf = der Code ohne die Signatur (die Implementierung)
 
 
 <h2>6.X.2025, Montag</h2>
+Es gibt zwei Spezien des Programms "Studio".
 "Studio 2022" ist der Sprache C++ angewiesen.
-<p>
-Max sagte, dass die nächste Woche den Bewerbungen gewidmet wird.
-</p>
-Es gibt eine andere Version von Eclipse, die speziell für C++ entwickelt ist.
+
 <p>
 Die Konstante "endl" ist nicht dasselbe wie das Symbol \n, sondern etwas größeres: sie fluscht den Puffer dazu.
 </p>
+
+<div style="border:1px solid black">
 Ein interessanter syntaktishscher Zucker ist in C++ in Konstruktor eingeführt. Es gibt eine Möglichkeit,
 die Felder zwischen dem Rumpf des Konstruktors und der Signatur zu initialisieren ("Initialisierungsliste").
+</div>
+
 <p>
 Um den Output in C++ wie in C zu organisieren, benutzt man die Bibliothek "cstdio".
 </p>
-Die Anweisung "delete" ruft den Destruktor auf, die Anweisung "free" ruft keinen Destruktor auf.
-Die Anweisung "delete" kann man bezüglich eines "normalen" Zeigers aufrufen,
+
+<table border="1">
+<tr>
+    <td>
+        Die Anweisung "delete" ruft den Destruktor auf.
+        <br/>
+        Die Anweisung "delete" kann man bezüglich eines "normalen" Zeigers aufrufen
+    </td>
+    <td>
+        Die Anweisung "free" ruft keinen Destruktor auf
+    </td>
+</tr>
+</table>
+
 <p>
 Es gibt die Möglichkeit, die Anweisung "new" im Bezug auf einen "normalen" Zeiger aufzurufen:
 new char[size];
@@ -1373,17 +1410,18 @@ Ich fand nicht, ob ein Konstruktor einen anderen Konstruktor aufrufen kann.
 
 Neue Begriffe:
 <ul>
-<li>Die Mehrfachvererbung</li>
-<li>Der Namensraum</li>
-<li>plattformgebunden (plattformabhängig)</li>
+<li>die Mehrfachvererbung</li>
+<li>der Namensraum</li>
+<li>plattformgebunden µ sein = plattformabhängig µ sein</li>
 <li>"dangling pointer" (wenn der entprechende Speicher schon freigegeben ist)</li>
+<li>die Kindklasse</li>
 </ul>
 
 Max gab uns irgendeine Aufgabe, und wir wurden auf uns selbst überlassen. Ich schlug seine Broschüre auf,
 dort wurden die Muster erwähnt,
 die Bande "GoF" und ihre paar Dutzend Muster, von denen nur "das Singleton" und "die Fabrik" im Programm unseres Unterrichts stehen.
 Das Singleton ist mir gut bekannt (hier gibt es statische Felder auch), aber die Fabrik
-machte ich zu meiner Aufgabe.
+mache ich zu meiner Aufgabe.
 
 <h2>7.X.2025, Dienstag</h2>
 
@@ -1411,9 +1449,6 @@ Der Unterstrich am Ende der Variablen bedeutet "privat", das ist eine Konvention
 Es gibt so ein Ding in C++, wie den Kopierkonstruktor. Mir ist, das ist ein normaler Konstruktor, dessen Signatur aus derselber Klasse besteht.
 </p>
 
-
-"die Kindklasse"
-
 <p>
 Der Konstruktor kann als eine normale Funktion benutzt werden (ohne des Präfixes "new").
 </p>
@@ -1440,9 +1475,12 @@ Ich habe begriffen, was das gestrige Phänomen "unique pointer" bedeutet.
 <h2>9.X.2025, Donnerstag</h2>
 <p>
 Während des Berichts zeigte Maurizio etwas schreckliches.
-Das war ein ziemlicher Spalt zwischen ihm und anderen Studenten.
+Er hat irgendein Spiel entwickelt, und
+das stellt ein ziemlicher Spalt zwischen ihm und anderen Studenten dar.
 Einmal erblickte ich, wie er das Und-Zeichen inmitte der Parameterliste wieder benutzt.
 </p>
+
+<div style="border:1px solid red">
 Heute lernen wir "Templates".
 <p>
 template &lt;typename µ&gt; vor dem Fragment.
@@ -1451,18 +1489,20 @@ template &lt;typename µ&gt; vor dem Fragment.
 <p>
 Und wieder ist Klasse mit dem Parameter in spitzen Klammern benutzt und methode ohne den Parameter.
 </p>
+</div>
 
-<p>
-int x=018 ist nicht 18. Das ist oktal Zahl
-</p>
+
+<table border="1">
+<tr><td>
+<pre>
+int x=018
+</pre>
+ist nicht 18. Das ist oktal Zahl!
+</td></tr>
+</table>
 
 Das Schlüsselwort "const" bei statischen Methoden kann man nicht anwenden.
-<p>
-<i>Heute hätte ich eine größe Überraschung.
-Wenn es einen Konstruktor T(string) gibt
-kann man Funktion f(T) als f(string) aufrufen!
-Aber das Experiment zeigte, das es nicht wahr ist</i>
-</p>
+
 
 <h2>10.X.2025, Freitag</h2>
 
@@ -1499,7 +1539,9 @@ C - .h, C++ - einfach
 Semikolon am Ende der Klasse.
 </p>
 
-Er erzählte ausführlich über dem Typ "unique_ptr", und es stellte sich heraus, dass es nichts besonderes darin gibt.
+
+<div style="background-color: yellow">
+Anton erzählte ausführlich über dem Typ "unique_ptr", und es stellte sich heraus, dass es nichts besonderes darin gibt.
 Details:
 <ol>
 <li>Statt Konstruktors benutzt dieser Typ etwas wie eine Fabrik, die Argumente dieses statischen Methode (make_unique)
@@ -1510,13 +1552,17 @@ einfache Anweisung (ohne die Methode move) möglich ist</li>
 <li>eine statische Methode move(), wenn ich richtig verstanden habe, für Anweisung</li>
 <li>use_count() - zeigt, wie viele Zeiger sind kreiert</li>
 </ol>
+</div>
+
 
 <p>
 Heute habe ich Nancy in Wirklichkeit mit dem Franzosen gesehen. Das schockierte mich.
+Der Beginn der Krankheit.
 </p>
 
 <h2>11.X.2025, Samstag</h2>
-Kam das Ergebnis der Prüfung. Ich habe nicht bestanden
+Kam das Ergebnis der Prüfung. Ich habe nicht bestanden.
+Aber die gestrige Katastrophe ist schrecklicher.
 
 
 
@@ -1525,7 +1571,8 @@ Kam das Ergebnis der Prüfung. Ich habe nicht bestanden
 
 
 <h2>12.X.2025, Sonntag</h2>
-Der Geburtstag Alexander
+Der Geburtstag Alexander.
+Tante Tetiana und Frau Irene gaben mir einen Sack voller Joghurts.
 
 
 
@@ -1724,11 +1771,11 @@ Heute tauchte so ein Phänomen SQL auf, wie Punkt (wenn wir uns an ein Feld von 
 
 <p>
 Der Ehemann von Frau Erika hat mir die Tür gezeigt.
+Ich verbinde sein Benehmen mit meiner scheiterten Visite zu Nancy
+am 13.X.2025.
 </p>
 
-Blablabla! MariaDB ist gar nicht der ganze Inhalt vom Kurs DB.
-Ja, sie beginnen Datenbankarten zu besprechen,
-irgendein "DBMS" - alles deutet darauf hin, dass diese Schule nicht seriös ist.
+
 
 <p>
 die graphische Oberfläche = das GUI
@@ -1771,16 +1818,19 @@ das Etikett kann den Wert '$.tags', zum Beispiel annehmen.
 </p>
 
 
+<ul>
+    <li>µ skalieren</li>
+    <li>case-sensitiv µ sein</li>
+</ul>
 
-µ skalieren
 
 
 <p>
 Heute war ich ein bisschen in demselben Raum mit Maurizio, aber die Aufgabe war einfach.
 </p>
 
-Kapitel 2.5.7 ist hiermit abgeschlossen.
 
+<div style="border: 1px solid blue">
 <p>
 Wir übergehen ausgerechnet zu normalen Formen.
 Die Formen bezeichten man so: 1NF, 2NF usw.
@@ -1818,12 +1868,14 @@ Wir können eine neue Entität erschaffen, die aus diesen Feldern besteht</li>
 
 Dieses Thema ist in der Nähe meines Strebens nach die perfekte Sprache...
 </p>
+</div>
+
 
 
 
 <h2>24.X.2025, Freitag</h2>
 
-case-sensitiv µ sein
+
 
 <p>
 Die Fahrschule "Brode"
@@ -1847,7 +1899,7 @@ kündigte eine Fortsetzung der Aufgabe an.
 Falk: "Ein bisschen übersichtlicher"
 
 <p>
-Irgndeine Dateien mit der Dateiendung .sql.
+Dateien mit der Dateiendung .sql.
 Der Inhalt ist narürlich Skript.
 </p>
 
@@ -2505,21 +2557,33 @@ Nach der Prüfung machte ich das. Gegen 18:00 schickte ich Helga eine E-Mail mit
 
 <h2>7.XII.2025, Sonntag</h2>
 
-Sehr seltsame Reaktion Nancys auf das Buch. Ca. 18:15 erschien sie in Telegram und war dort bis heute Mittag!
+Sehr seltsame Reaktion Nancys auf das Buch. Ca. um 18:15 erschien sie in Telegram und war dort bis heute Mittag!
+Ich vermute, dass diese Aktivität an dem Buch liegt, da sie sehr selten in Telegram erscheint.
+
 <p>
 Ich besuchte den letzten Tag des Jahrmarkts.
-Der Ehemann von Frau Erika bemerkte mich
+Der Ehemann von Frau Erika bemerkte mich und seine Augen verfolgten mich.
+Ich kaufte nichts.
 </p>
 
 
 
 
 <h2>8.XII.2025, Samstag</h2>
-Beginn des Praktikums
+Der Beginn des Praktikums
 
 
 <h2>14.XII.2025, Sonntag</h2>
-Ich kam zu Maja, um ihr Fahrrad abzuholen
+Maja sagte, dass ihr Fahrrad gestohlen wurde.
+Ich versprach ihr das Fahrrad von ihrer Tochter auf die Beine zu stellen.
+Aber wegen des Zusammentreffens mit Frau Valentina kam ich nicht am Mittag.
+Nach der Visite wurde ich plötzlich von Maja zurückgewiesen, weil
+sie sich mit ihrem Schüler beschäftigt.
+Am Abend kam ich wieder zu Maja, um ihr Fahrrad abzuholen,
+und besuchte die Familie nach der langen Pause.
+Frau Ovsienko erzählt mir von "meinem" Mädchen mit einem neuen Bräutigam.
+Maja gab mir endlich grünes Licht, und ich 
+schaute mich in ihrem Keller um.
 
 
 <h2>19.XII.2025, Freitag</h2>
@@ -2539,7 +2603,8 @@ Das heißt, Maja benutzt es.
 Ich gebe mich zufrieden
 
 <h2>22.XII.2025, Montag</h2>
-Ich besuchte Meerane, aber nicht besonders erfolgreich und kurz.
+Ich besuchte Meerane, aber nicht besonders erfolgreich.
+Dabei war diese Visite zu kurz.
 Die Boombox habe ich nicht abgesendet.
 <p>
 Ich kaufte den Hoodie im Laden, wo wir Lada die Hosen kauften.
@@ -2562,7 +2627,12 @@ Ich besuchte das Museum, ich habe viel Bargeld dank Frau Valentina!
 
 <h2>27.XII.2025, Samstag</h2>
 Heute ist dieser vermutliche Geburtstag. Aber ich unternehme nichts.
-Ich sehe, dass Helga gestern Telegram erstmals nach dem 6.XII.2025 besuchte.
+Ich sehe, dass Helga gestern Telegram erstmals nach dem 6-7.XII.2025 besuchte.
+Ich habe die Hypothese, dass ihr Geburtstag nicht auf das Datum 27.XI fällt, sondern auf
+ein Datum zwischen dem 23.XI und dem 26.XI, da ich diese Sitte schon kenne,
+die Geburtstage vom Personal am Ende der entsprechenden Woche zu feiern.
+Der 27.XII im vorherigen Jahr 2024 fiel ausgerechnet auf Freitag.
+Kann sein, dass ihr Geburtstag 26.XII ist oder sogar mit dem Weihnachten übereinstimmt.
 
 
 <h2>28.XII.2025, Sonntag</h2>
@@ -3376,9 +3446,17 @@ class Circle{
 };
 </pre>
 
-<p>
+
+<table border="1">
+<tr>
+<td>
+<pre>
 u_ptr = std::make_unique &lt; std::string &gt; ( "Hallo" )
-</p>
+</pre>
+</td>
+</tr>
+</table>
+
 
 Es gibt so eine Falle:
 <p>
@@ -3580,6 +3658,11 @@ Ich soll diese Phänomene mir unbedingt anschauen
 </p>
 
 
+<p>
+Ich besuchte "Kaufland". Dort traf ich auf das Mädchen, das hier arbeitet.
+Aber ich verpasste den Moment, um mich nach ihrer Nummer zu erkundigen.
+</p>
+
 <h2>16.I.2026, Freitag</h2>
 
 
@@ -3691,7 +3774,13 @@ Die Frage: kann ein Setter in C++ so die Felder initialisieren wie Konstruktor?
 Max sagt, nein.
 </p>
 
+Heute fand ein Mittagsessen bei Frau Valentina statt.
+Deswegen schuf ich das Fasten ab.
 Frau Valentina bekam den Ausgleich ihrer Schulden.
+Nach dem Mittagsessen besuchte ich "Kaufland" und traf auf die Frau,
+die aus der Gruppe von den ukrainischen Mädchens stammt (die Frau, die Nancy mit Valentina vertauscht hat).
+Sie arbeitet mit dem Mädchen, das ich finden will.
+Ich übergab meine Nummer.
 <p>
 Helga erschien am Abend.
 </p>
@@ -3709,7 +3798,7 @@ Heute erschien Helga vormittags und dann nachmittags. Liest sie mein Buch wieder
 
 Ich brach auf den Sportplatz zum Reck auf. Unterwegs bemerkte ich zurückkehrende Maja mit ihrer Gitarre.
 Ich hielt nicht an, statdessen beschloss ich, nach dem Reck sie abzufangen. Das gelang mir, ich
-begrüßte sie.
+begrüßte sie. Aber was machte sie auf der Arbeit? Heute ist ja Samstag!
 
 
 </body>
