@@ -130,15 +130,10 @@ eine einfache Auszeichnungssprache "Markdown"
 <h2>1.VII.2025, Dienstag</h2>
 
 
-<p>
-case-sensitiv µ sein
-</p>
+
 
 3! nennt man "3 Fakultät"
 
-<p>
-downloadbar
-</p>
 
 
 
@@ -146,10 +141,13 @@ downloadbar
 
 <h2>2.VII.2025, Mittwoch</h2>
 
-<p>
-"Abhängigkeit"
-"Softwarepaket"
-</p>
+<ol>
+<li>Abhängigkeit</li>
+<li>Softwarepaket</li>
+<li>downloadbar</li>
+<li>case-sensitiv µ sein</li>
+<li>die Pfeiltasten</li>
+</ol>
 
 Der Heimatort von Falk ist Bielefeld. Ich war heute mit ihm und Pierre in einer Gruppe.
 "als Korona angefangen hat" - ihre Phrase.
@@ -164,7 +162,7 @@ Es gibt einen Befehl in der Konsole Linux (bzw. in "wsl"), der mit dem heutigen 
 Man benutzt dabei den "pipe-Operator".
 </p>
 
-die Pfeiltasten
+
 
 
 
@@ -186,6 +184,9 @@ Ein interessanter Fernsehturm am Rand der Stadt Leipzig.
 
 cls - Kommando in der Konsole Windows
 
+
+<div style="border:1px solid blue">
+<p>
 Ein Kommentar kann so aussehen:
 <pre>
 /*
@@ -195,12 +196,16 @@ Ein Kommentar kann so aussehen:
  *
  */
 </pre>
+</p>
+
 
 Noch eine interessante Art von mehrzeiligen Kommentaren:
 <pre>
 //Hello, I\
 love U!
 </pre>
+</div>
+
 
 
 echo %ERRORLEVEL%
@@ -219,8 +224,9 @@ setbuf(stdout,NULL);
 
 MD5 gilt als kryptografisch gebrochen. Dafür verwendet man heute SHA-256 oder SHA-3, bcrypt, Argon2 (für Passwörter) usw.
 
-<p>
-Ich bin aus Chemnitz zurückgekehrt. Die Neuapostolische Kirche ist geöffnet, und die Leute bewegen sich aktiv. Sieht sehr ähnlich "unserer" Kirche aus.
+<p style="color:blue">
+Ich bin aus Chemnitz zurückgekehrt.
+Die Neuapostolische Kirche ist geöffnet, und die Leute bewegen sich aktiv. Sieht sehr ähnlich "unserer" Kirche aus.
 Jegor neben dem Rack. Frau Rita.
 </p>
 
@@ -228,12 +234,10 @@ Jegor neben dem Rack. Frau Rita.
 <h2>10.VII.2025, Donnerstag</h2>
 Windows 11 erlaubt das, den Hintergrund in CMD auszuwählen!
 
+
 <p>
-atof - ASCII to float
-</p>
-
 Das Rautezeichen #
-
+</p>
 
 
 <h2>11.VII.2025, Freitag</h2>
@@ -362,8 +366,10 @@ fällt eine Analogie mit dem berühmten Projekt "Basic English" auf:
 Parcing heißt Casting: man kann entweder "implizit" oder "explizit" casten.
 </p>
 
-
-void* - der "universelle" Zeiger
+<ul>
+<li>void* - der "universelle" Zeiger</li>
+<li>Ein sehr nützlicher Typ "size_t"</li>
+</ul>
 
 
 <p>
@@ -383,23 +389,26 @@ Jannine hat alle 10 Aufgaben hinter sich. Ich fange an, eine Konrurrentin in ihr
 
 <h2>23.VII.2025, Mittwoch</h2>
 
-die Bibliothek &lt;ctype.h&gt;:
+Die Bibliothek &lt;ctype.h&gt;:
 <ul>
 <li>int tolower(int)</li>
 <li>int toupper(int)</li>
 </ul>
 
-<p>
-Eine sehr nützliche Funktion "sprintf" aus der Bibliothek "string.h".
-</p>
+Die Bibliothek &lt;string.h&gt;:
+<ul>
+<li>atof - ASCII to float</li>
+<li>Eine sehr nützliche Funktion "sprintf"</li>
+</ul>
 
 
 
 
 
-<p>
-Ein sehr nützlicher Typ "size_t"
-</p>
+
+
+
+
 
 
 
@@ -481,16 +490,17 @@ nicht initialisierter Pointer kann irgendwohin zeigen, wo er nicht hinzeigen sol
 Es bleibt die Frage, welche Wege außer der Referenzierung existieren, um den Pointer zu initialisieren?
 </p>
 
-<p>
+<table border="1">
+<tr><td>
 Geschweifte Klammern bilden ihren eigenen Bereich scope, wie in Java!
-</p>
-
-Die Hülle für das neue Handy von Fr. Valentina kam erstaunlicherweise schnell.
+</td></tr>
+</table>
 
 <p style="color:red">
-Es ergab sich, dass dieses Phänomen "reload" (µ überladen) funktioniert in C nicht, falls die Signatur nur so unterscheidet, dass der Zeiger statt der
-Variablen auftritt.
+Die Hülle für das neue Handy von Fr. Valentina kam erstaunlicherweise schnell.
 </p>
+
+
 
 <h2>31.VII.2025, Donnerstag</h2>
 
@@ -776,6 +786,9 @@ Es gibt dasselbe Phänomen, wie in der Sprache "Java" ("annotations"):
 
 <p style="color:red">
 Das Phänomen "Overload" fehlt in C überhaupt! Ich verstehe nicht, wie diese Sprache mit der Sprache C++ verwandt sein kann.
+<br/>
+Es ergab sich, dass dieses Phänomen "reload" (µ überladen) funktioniert in C nicht, falls die Signatur nur so unterscheidet, dass der Zeiger statt der
+Variablen auftritt.
 </p>
 
 
@@ -910,9 +923,13 @@ Heute lernte ich den Unterschied zwischen der maskulinen und der neutralen Form 
 Anton brachte uns die sequentielle Suche und die binäre Suche bei.
 Ich stellte die Frage, was ist der Nutzen von der binären Suche, wenn sie ohne des Sortierens keinen Sinn hat.
 </p>
+
+<p style="color:blue">
 Frau Valentina brachte die falsche eGK mit. Ich griff auf eigene Fist ein, d. h. ich beschädigte ihre
 falsche eGK, damit sie besser weiß, welche von den Karten die richtige ist.
 Deswegen wurde der Termin auf 11. September 16:00 verschoben.
+</p>
+
 
 
 
@@ -973,15 +990,17 @@ Ich kenne schon einige typischen Namen, z. B. "tmp"
 </td></tr>
 </table>
 
-
+<p style="color:blue">
 Um das Sodbrennen zu stillen, kaufte ich einen Joghurt bei "Edeka".
+</p>
+
 
 
 
 
 <h2>2.IX.2025, Dienstag</h2>
 
-<p>
+<p style="color:red">
 Die Magenübersäuerung ist stiller, aber ist nicht ganz gegangen.
 </p>
 
