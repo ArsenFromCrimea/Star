@@ -655,12 +655,9 @@ Die Funktion "atoi" konvertiert Zeichenketten in Zahlen.
 <table border="1">
 <tr>
 <td>
-%zd ist angeblich ein universeller Platzholder, der sich der eingegebenen Zahl anpasst.
+%zd ist angeblich ein universeller Platzholder, der sich der eingegebenen Zahl anpasst.<br/>
 Aber warum existiert noch %zu denn?
-</td>
-</tr>
-<tr>
-<td>
+<br/>
 %zd ist nicht auf float anwendbar.
 </td>
 </tr>
@@ -671,22 +668,15 @@ Aber warum existiert noch %zu denn?
 </tr>
 <tr>
 <td>
-%o - das Oktalsystem
+Heute erfuhr ich, dass es einen wichtigen Unterschied zwischen %04d und %4d gibt:<br/>
+%04d - bedeutet, dass Symbole "0" statt der Leerzeichen
+vor die Zahl gestellt werden, damit die Zahl die notwendige Länge bekommt:<br/>
+"0034" vs. "  34"
 </td>
 </tr>
 <tr>
 <td>
-%x - das Hexadezimalsystem
-</td>
-</tr>
-<tr>
-<td>
-Heute erfuhr ich, dass es einen wichtigen Unterschied zwischen %02d und %2d gibt
-</td>
-</tr>
-<tr>
-<td>
-%+04d - bedeutet, dass das Zeichen + bei positiven Zahlen anwesend sein soll
+%+4d - bedeutet, dass das Zeichen + bei positiven Zahlen anwesend sein soll
 </td>
 </tr>
 </table>
@@ -729,6 +719,7 @@ das wie das berühmte Objekt namens "Oumuamua" uns besuchte.
 
 <h2>18.VIII.2025, Montag</h2>
 
+<div style="border:1px solid brown">
 Was ist der Unterschied zwischen
 <pre>
 int function(void){
@@ -740,6 +731,8 @@ int function(){
 }
 </pre>
 ?
+</div>
+
 
 <p>
 Vorerst gestalten wir einen Satz von Funktionen als eine Enumeration, worin jeder Funktion ihre ID entspricht,
@@ -829,7 +822,15 @@ Deklaration ist vor der Definition.
 Anton erklärte den Begriff "swoop" sehr gut: wenn man zwei Getränke tauschen will, braucht man ein drittes Glas.
 </p>
 
+<div style="border:3px solid red">
+
+Farben in der Konsole:
+<pre>
 printf("\033[2J");
+</pre>
+
+</div>
+
 
 <p style="color:yellow">
 Es ist unmöglich, ein Array von unbestimmter Länge zu definieren. Entweder ein Zeiger oder ein Array von bestimmter Länge.
@@ -914,9 +915,7 @@ falsche eGK, damit sie besser weiß, welche von den Karten die richtige ist.
 Deswegen wurde der Termin auf 11. September 16:00 verschoben.
 
 
-<p style="color:red">
-Ich sehe, das "Override" möglich im Studio ist, aber später lies ich, dass "Overrade" nur in C++ etabliert wurde
-</p>
+
 
 <p style="color:yellow">
 Vielleicht sind die Fehler, worauf das Studio hinweist, keine Fehler aus der Sicht des Kompilierers.
@@ -934,14 +933,15 @@ Die Antwort: "Nein"</li>
 </ul>
 
 <h2>29.VIII.2025, Freitag</h2>
-<p>
-Es gibt auch die "Speicherkomplexität".
-</p>
 
+
+<div style="background-color:yellow">
 <p style="color:blue">
 Das "Jahr-2038-Problem"
 heißt dieses Problem, das darin besteht, dass nur eine begrenzte Menge Bytes für die Bemessung der Epoche Unix benutzt wird.
 </p>
+</div>
+
 
 
 
@@ -985,15 +985,17 @@ Um das Sodbrennen zu stillen, kaufte ich einen Joghurt bei "Edeka".
 Die Magenübersäuerung ist stiller, aber ist nicht ganz gegangen.
 </p>
 
+<div style="border:3px solid black">
 <p>
 Es gibt 2 Arten vom Speicher:
-Data segment
+Data segment und
 der Stappel: schneller, begrenzt (um 1 Byte kürzer).
 Der Stack bewegt sich von oben nach unten (zum Data segment, aber ich kann nicht begreifen,
-warum er kürzere Adressen benutzt)
+warum er kürzere Adressen benutzt).
+Ich habe verstanden, warum die Richtung, je nach der die Adressen den Variablen gegeben werden, immer sinkend ist:
+nur die globalen Variablen bekommen ihre Adressen normal.
 </p>
-
-Heute führten wir Experimente, die weisen darauf hin, das es 2 Bereiche im Speicher gibt:
+Heute führten wir viele Experimente, die darauf hinweisen.
 <ol>
 <li>.bss - uninitialisierte globale Variablen (Datensegment)</li>
 <li>.data - initialisierte globale Variablen (Datensegment)</li>
@@ -1001,11 +1003,10 @@ Heute führten wir Experimente, die weisen darauf hin, das es 2 Bereiche im Spei
 <li>Programmspeicher</li>
 <li>Heap</li>
 </ol>
+</div>
 
-<p>
-Ich habe verstanden, warum die Richtung, je nach der die Adressen den Variablen gegeben werden, immer sinkend ist:
-nur die globalen Variablen bekommen ihre Adressen normal.
-</p>
+
+
 
 Wir bewiesen, dass der Ergebnis der Funktion malloc ist unvoraussehbar. Weder die Richtung, sondern der Abstand.
 Aber mir gelang es, zu beweisen, dass der Abstand immer durch 32 Bytes teilbar ist. Das ist "Heap".
@@ -1026,8 +1027,6 @@ Funktionen sind standardmäßig extern.
 </table>
 
 2 MB ist die Ressource normalerweise für den Stack.
-Die Funktion calloc ist bloß eine erweiterte Version der Funktion malloc, sie
-nicht nur produziert die Adresse, sondern gibt sich auch Mühe, diese Adresse aufzuräumen, d. h. legt null hinein (clear).
 
 
 
@@ -1036,9 +1035,11 @@ nicht nur produziert die Adresse, sondern gibt sich auch Mühe, diese Adresse au
 Neue Option des Befehls gcc:
 stack-size=2000
 
-<p>
-Die Funktion realloc() verändert die Größe.
-</p>
+<ul>
+<li>Die Funktion realloc() verändert die Größe</li>
+<li>Die Funktion calloc ist bloß eine erweiterte Version der Funktion malloc, sie
+nicht nur produziert die Adresse, sondern gibt sich auch Mühe, diese Adresse aufzuräumen, d. h. legt null hinein (clear)</li>
+</ul>
 
 
 
@@ -1232,7 +1233,6 @@ Mein Experiment zeigt, die Objekte, die einem Wert des primären Typs entspreche
 
 <h2>23.IX.2025, Dienstag</h2>
 Max erzählt etwas von "Hash" der Objekte.
-Dann erwähnt er den Befehl System.gc()
 <p>
 4 Stufen der Sichtbarkeit für jedes Mitglied der Klasse:
 <table border="1">
@@ -1245,7 +1245,7 @@ Dann erwähnt er den Befehl System.gc()
 <tr>
 <td>protected</td><td>#</td>
 </tr>
-<tr>
+<tr bgcolor="yellow">
 <td>package</td><td>~</td>
 </tr>
 </table>
@@ -1555,14 +1555,17 @@ einfache Anweisung (ohne die Methode move) möglich ist</li>
 </div>
 
 
-<p>
+<p style="color:blue">
 Heute habe ich Nancy in Wirklichkeit mit dem Franzosen gesehen. Das schockierte mich.
 Der Beginn der Krankheit.
 </p>
 
 <h2>11.X.2025, Samstag</h2>
+<div style="color:blue">
 Kam das Ergebnis der Prüfung. Ich habe nicht bestanden.
 Aber die gestrige Katastrophe ist schrecklicher.
+</div>
+
 
 
 
@@ -1571,8 +1574,11 @@ Aber die gestrige Katastrophe ist schrecklicher.
 
 
 <h2>12.X.2025, Sonntag</h2>
+<div style="color:blue">
 Der Geburtstag Alexander.
 Tante Tetiana und Frau Irene gaben mir einen Sack voller Joghurts.
+</div>
+
 
 
 
@@ -1591,8 +1597,11 @@ Ich erinnere mich daran, dass so ein Begriff, "Zeitarbeit", uns in der AfI beige
 <p>
 Falk: "Wenn das Flugzeug absturzt, überm Meer, bin ich der letzte, der noch schwimmt."
 </p>
+<div style="color:blue">
 Ich probierte eine von Joghurts.
 Sie ist gut, aber provoziert mein berühmtes Problem mit dem oberen linken Zahn überraschenderweise.
+</div>
+
 
 
 
@@ -1607,11 +1616,13 @@ Ich schwänze die Akademie. Ich fahre nach Torgau
 
 
 <h2>16.X.2025, Donnerstag</h2>
-
+<div style="color:blue">
 Ein Termin bei Frau Carola.
 Dann fuhr ich in die AfI.
 Nach dem Hauptquartier besuchte ich die Werkstatt, aber meine
 Basteleien im Regal verfolgte ich leider nicht
+</div>
+
 
 <p>
 in meinem Traumjob µ landen
@@ -1631,8 +1642,10 @@ Er sagt, dass Attribute in Java, falls nichts vor ihnen steht, als publisch gelt
 
 
 <h2>17.X.2025, Freitag</h2>
-
+<div style="color:blue">
 Herr Lehman
+</div>
+
 
 <table border="1">
 <tr><td>
@@ -1720,7 +1733,10 @@ FROM information_schema.tables
 WHERE table_schema = 'Name of the table'; 
 </pre>
 
+<div style="color:blue">
 Ich bestellte eine Nachprüfung
+</div>
+
 
 
 
@@ -1768,12 +1784,14 @@ Ich habe die Hypothese, dass es daran liegt, dass solches leeres Feld eine leere
 Heute tauchte so ein Phänomen SQL auf, wie Punkt (wenn wir uns an ein Feld von einer anderen Tabelle wenden).
 </p>
 
-
+<div style="color:blue">
 <p>
 Der Ehemann von Frau Erika hat mir die Tür gezeigt.
 Ich verbinde sein Benehmen mit meiner scheiterten Visite zu Nancy
 am 13.X.2025.
 </p>
+</div>
+
 
 
 
@@ -1877,13 +1895,16 @@ Dieses Thema ist in der Nähe meines Strebens nach die perfekte Sprache...
 
 
 
-<p>
+<p style="color:blue">
 Die Fahrschule "Brode"
 </p>
 
 
 <h2>25.X.2025, Samstag</h2>
+<div style="color:blue">
 Die Exkursion
+</div>
+
 
 
 
@@ -2060,9 +2081,13 @@ Die Funktion "COALESCE"
 
 AS kann am Ende des Befehls SELECT stehen.
 
+
+
+
+
 <h2>29.X.2025, Mittwoch</h2>
 
-Interessantes Kommando
+Ein interessantes Kommando:
 <pre>
 CREATE TABLE IF NOT EXISTS
 </pre>
@@ -2082,15 +2107,21 @@ Ich verstehe diese Begriffe, aber ich habe es satt, sie immer zu wiederholen!
 
 </p>
 
-
+<pre>
 CREATE TABLE Games (
     pk_game_id INTEGER AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     release_date DATE
 );
+</pre>
 
+
+<pre>
 ALTER TABLE sites
 DROP PRIMARY KEY;
+</pre>
+
+
 <p>
 Max organisierte einen großen Test in Bezug auf die Datenbanken.
 Die Zeit wurde sehr knapp gegeben und ich erreichte
@@ -2147,6 +2178,7 @@ Diese Entwicklungsumgebung ist mir mehr bekannt.
 <p>
 Die Sprache "Markdown" wird in Jupyter benutzt
 </p>
+
 Max fing an, uns Virtuelle Umgebungen (venv) beizubringen.
 
 
@@ -2180,6 +2212,7 @@ def y(x):
 
 
 <h2>3.XI.2025, Montag</h2>
+
 Anton unterrichtet uns.
 Er ist ein guter Lehrer, schade, dass
 ich heute unaufmerksam war...
@@ -2198,7 +2231,8 @@ type(...) - um den Typ zu erfahren
 </p>
 
 <p>
-"True" und "False" großgeschrieben
+"True" und "False" sind in Python großgeschrieben.<br/>
+True = 1, False = 0, wie in C
 </p>
 
 <p>
@@ -2249,10 +2283,13 @@ s= "Das ist ein Satz."
 s.islower() - False
 </p>
 
+<div style="border:1px solid red">
 <pre>
 s="{0}AfI{1}Xing{0}"
 s.format("-","/") = "-AfI/Xing-"
 </pre>
+</div>
+
 
 <p>
 Mengen haben keine Duplikate.
@@ -2267,33 +2304,48 @@ a!=b!=c
 for x,y in zip(vorspeise,hauptspeise):
    print(x,y) - nur 2 Paare!
    
-   
- global - für Variablen in Funktionen
+<p>
+global - für Variablen in Funktionen
+</p>
  
- f=lambda a:a+10
- f(3) - 13
+<p>
+f=lambda a:a+10
+f(3) - 13
+</p> 
+
  
  g x,y:x*y
  
+
+
  f=filter(Bedingung, liste) Bedingung kann eine anonyme Funktion sein
  list(f)
-Es gibt so einen Befehl wie "pass"! Das ist NOP!
+
+<p>
+Es gibt so einen Befehl wie "pass" in Python! Das ist NOP!
+</p>
+
 
 
 Plötzlich verlor ich den Faden.
 Ich versank in meinem Projekt und plötzlich bemerkte ich, dass sie sich
 mit einigen Aufgaben beschäftigen.
 
+<p>
 import meinebib
 help(meinebib)
+</p>
 
 
+<p>
 datei=open("text.txt","r")
 datei.readline()
 datei.tell() - die Position
 datei.seek(0)
 datei.flush()
 datei.close()
+</p>
+
 
 
 
@@ -2377,12 +2429,18 @@ Max kam und bat zu zeigen, was wir während der
 Selbstlernphase gemacht haben.
 Matthias hat Graphen zur gestrigen Aufgabe erstellt.
 
+<p>
 GET:
 https://ArsenFromCrimea.github.io/?param1=value1&param2=value2
+</p>
 
-200 - OK, 404 - nicht OK.
-Alle Status:
+
+<div style="border:1px solid black">
+200 - OK, 404 - nicht OK.<br/>
+Alle möglichen Status:<br/>
 https://developer.mozilla.org/de/docs/Web/HTTP/Reference/Status/201
+</div>
+
 
 is_json
 
@@ -2398,20 +2456,25 @@ sorted
 # - ausµkommentieren
 </p>
 
-a.get("g") = a["g"]?
+<div style="border:1px solid green">
+a.get("g") = a["g"], aber die Funktion "get" kann noch ein Parameter eingegeben werden,
+der sagt, durch welchen Wert wird das Ergebnis ersetzt, falls so ein Feld fehlt.
+</div>
+
 
 <h2>6.XI.2025, Donnerstag</h2>
 Ich stand um 6:00, und
 mir gelang es,
 post zu verstehen!
 
-<p>
+<div style="border:1px solid blue">
 Max zeigte die Seite, wo
 man
 API Key
-von
+von der Organisation "NASA" erfahren kann:
+<br/>
 api.nasa.gov
-</p>
+</div>
 
 
 <pre>
@@ -2428,10 +2491,13 @@ sys.exit(<b>der Code</b>)
 
 
 <h2>11.XI.2025, Dienstag</h2>
+<div style="color:blue">
 Wieder bin ich in Torgau.
 Ich bezahlte die Nachprüfung, aber es ergab sich, dass sie nicht 170€, sondern 175€ kostet.
 Ich nahm Bargeld aus einem Automaten.
 Abends entdeckte ich, dass ich einen Geldschein verloren habe (auch 5€)
+</div>
+
 
 
 <h2>12.XI.2025, Mittwoch</h2>
@@ -2440,6 +2506,7 @@ https://learngitbranching.js.org/?locale=de_DE
 
 
 <h2>13.XI.2025, Donnerstag</h2>
+<div style="color:blue">
 <p>
 Ein Abendessen mit Valentina. Sie überredet mich,
 Nancy anzurufen.
@@ -2452,19 +2519,23 @@ Er lief mit einem Rucksack.
 Zu Hause rief ich Nancy an.
 Sie nahm den Höhrer nicht ab.
 </p>
+</div>
+
 
 
 
 <h2>17.XI.2025, Montag</h2>
 
-https://github.com/github/gitignore/blob/main/Python.gitignore
-
-
+<div style="border:3px solid black">
+Man kann in Python Typen zeigen, obwohl es kein Muss ist:
 
 <pre>
 def sum(a:int,b:int)->int:
 	return a+b
 </pre>
+</div>
+
+
 
 
 <h2>21.XI.2025, Freitag</h2>
@@ -2475,9 +2546,7 @@ Florian organisierte einen Test
 
 
 
-<p>
-"iterativ", "rekursiv" ------- Das ist kein Paradigma sondern eine Art und Weise, Probleme zu lösen.
-</p>
+
 
 
 <p>
@@ -2498,12 +2567,16 @@ Florian organisierte einen Test
 </tr>
 </table>
 
+<div style="color:blue">
 Schwester Iris erzählt wieder, wie sie mit Nancy hier über mich sprach.
 Plötzlich verriet Schwester Iris, dass Nancy eine Arbeit in Leipzig gefunden habe
+</div>
+
 
 
 
 <h2>22.XI.2025, Samstag</h2>
+<div style="color:blue">
 <p>
 Wegen der gestrigen Neuigkeit hörte ich auf, den Franzosen als das Symbol meines Desasters anzusehen.
 Definitiv arbeitet sie in einem Restaurant, denke ich.
@@ -2516,6 +2589,8 @@ Ihre Tochter ist schön.
 <p>
 Am Abend sehe ich keine Antwort Nancys auf meine Kurzmitteilung
 </p>
+</div>
+
 
 
 <h2>24.XI.2025, Montag</h2>
@@ -2524,25 +2599,40 @@ Ich bin auf das Projekt III angewiesen.
 Das Projekt III hat 2 Teams. Mein Team ist das Team 2, und enthielt zwei Menschen:
 mich und Helena
 </p>
+
+<div style="color:blue">
 Wieder kehrt der Franzose vom Viertel Nancys zurück.
 Nicht laufend, ruhig und durch den Park.
+</div>
+
 
 
 
 <h2>29.XI.2025, Samstag</h2>
-Ein Gespräch mit Herrn Zieger
+<div style="color:blue">
+Ein Telefonat mit Herrn Zieger
+</div>
+
 
 
 <h2>2.XII.2025, Dienstag</h2>
+<div style="color:blue">
 Ich besuchte die AFI und begegnete Fräulein Alber dort.
+</div>
+
 
 
 
 <h2>3.XII.2025, Mittwoch</h2>
+<div style="color:blue">
 Frau Küste rief mich an.
-Die Antwort ist freilich negativ (Herr Lange willigte nicht ein), aber ich bin froh, dass ich mit den Frauen gesprochen habe.
+Die Antwort ist freilich negativ (Herr Lange willigte nicht ein),
+aber ich bin froh, dass ich mit den Frauen gesprochen habe.
+</div>
+
 
 <h2>6.XII.2025, Samstag</h2>
+<div style="color:blue">
 <p>
 Die Prüfung. Ich war allein.
 Ausgerechnet diese gute Frau, die russisch spricht, prüfte mich!
@@ -2553,10 +2643,12 @@ Die Texte sind kompliziert
 <p>
 Nach der Prüfung machte ich das. Gegen 18:00 schickte ich Helga eine E-Mail mit dem Link auf mein Buch. 
 </p>
+</div>
+
 
 
 <h2>7.XII.2025, Sonntag</h2>
-
+<div style="color:blue">
 Sehr seltsame Reaktion Nancys auf das Buch. Ca. um 18:15 erschien sie in Telegram und war dort bis heute Mittag!
 Ich vermute, dass diese Aktivität an dem Buch liegt, da sie sehr selten in Telegram erscheint.
 
@@ -2565,6 +2657,8 @@ Ich besuchte den letzten Tag des Jahrmarkts.
 Der Ehemann von Frau Erika bemerkte mich und seine Augen verfolgten mich.
 Ich kaufte nichts.
 </p>
+</div>
+
 
 
 
@@ -2574,6 +2668,7 @@ Der Beginn des Praktikums
 
 
 <h2>14.XII.2025, Sonntag</h2>
+<div style="color:blue">
 Maja sagte, dass ihr Fahrrad gestohlen wurde.
 Ich versprach ihr das Fahrrad von ihrer Tochter auf die Beine zu stellen.
 Aber wegen des Zusammentreffens mit Frau Valentina kam ich nicht am Mittag.
@@ -2584,48 +2679,63 @@ und besuchte die Familie nach der langen Pause.
 Frau Ovsienko erzählt mir von "meinem" Mädchen mit einem neuen Bräutigam.
 Maja gab mir endlich grünes Licht, und ich 
 schaute mich in ihrem Keller um.
+</div>
+
 
 
 <h2>19.XII.2025, Freitag</h2>
 Ende des Praktikums und Beginn der Ferien.
 Alina ist ein gutes Mädchen, ein edles.
 
-<p>
-Mir gelang es, den Gang im Rad von Maja zu ändern.
+<p style="color:blue">
+Am Abend gelang es mir plötzlich, den Gang im Rad von Maja zu ändern.
 Ich traf sie an der Ampel und begleitete sie nach Hause.
 Sie sagte, dass sie am Sonntag nach Dresden fährt
 </p>
 
 
 <h2>21.XII.2025, Sonntag</h2>
+<div style="color:blue">
 Ihr Fahrrad steht am Bahnhof geparkt.
 Das heißt, Maja benutzt es.
 Ich gebe mich zufrieden
+</div>
+
 
 <h2>22.XII.2025, Montag</h2>
+<div style="color:blue">
 Ich besuchte Meerane, aber nicht besonders erfolgreich.
 Dabei war diese Visite zu kurz.
 Die Boombox habe ich nicht abgesendet.
 <p>
-Ich kaufte den Hoodie im Laden, wo wir Lada die Hosen kauften.
+Ich kaufte endlich den Hoodie "Nirvana" im Laden, wo wir Lada die Hosen kauften.
 </p>
+</div>
+
 
 
 <h2>23.XII.2025, Dienstag</h2>
+<div style="color:blue">
 Die Tafel.
 Ich gebe Valentina 30€, aber sie verzichtet auf einen Teil von der Summe. 
 Olga Kuzmenko und Alexej.
+</div>
+
 
 
 <h2>26.XII.2025, Freitag</h2>
+<div style="color:blue">
 Ich besuche Torgau, um ein Ticket für die Veranstaltung im Voraus zu kaufen, aber die Frau an der Kasse versicherte mich, dass
 man Tickets direkt am Tag der Veranstaltung ruhig kaufen kann.
 Ich besuchte das Museum, ich habe viel Bargeld dank Frau Valentina!
+</div>
+
 
 
 
 
 <h2>27.XII.2025, Samstag</h2>
+<div style="color:blue">
 Heute ist dieser vermutliche Geburtstag. Aber ich unternehme nichts.
 Ich sehe, dass Helga gestern Telegram erstmals nach dem 6-7.XII.2025 besuchte.
 Ich habe die Hypothese, dass ihr Geburtstag nicht auf das Datum 27.XI fällt, sondern auf
@@ -2633,9 +2743,12 @@ ein Datum zwischen dem 23.XI und dem 26.XI, da ich diese Sitte schon kenne,
 die Geburtstage vom Personal am Ende der entsprechenden Woche zu feiern.
 Der 27.XII im vorherigen Jahr 2024 fiel ausgerechnet auf Freitag.
 Kann sein, dass ihr Geburtstag 26.XII ist oder sogar mit dem Weihnachten übereinstimmt.
+</div>
+
 
 
 <h2>28.XII.2025, Sonntag</h2>
+<div style="color:blue">
 Sehr unerfolgreicher Spaziergang mit Maja.
 Sie kam mit dem Fahrrad, sagte Danke sogar, aber dann enttäuschte mich:
 sie spricht mit mir kaum.
@@ -2647,17 +2760,26 @@ Ich kenne die Tradition, die Geburtstage von Mitarbeitern am Ende der Woche zu f
 und das kann bedeuten, dass ihr Geburtstag in Wirklichkeit innerhalb der Periode
 23.XII - 26.XII liegt, möglicherweise sogar mit Weihnachten übereinstimmt.
 </p>
+</div>
+
 
 <h2>29.XII.2025, Montag</h2>
+<div style="color:blue">
 Der Flohmarkt.
 Ich brach nach Chemnitz mit Tante Irene auf
+</div>
+
 
 
 <h2>30.XII.2025, Dienstag</h2>
+<div style="color:blue">
 Ich verließ Tante Irene und kehrte nach Delitzsch ein bisschen später, als um 13:00 zurück.
+</div>
+
 
 
 <h2>31.XII.2025, Mittwoch</h2>
+<div style="color:blue">
 Heutiger Tag ist sehr tragish.
 Ich besuchte die Familie, um ihr Halva zu schenken.
 Ich erfuhr, dass ukrainische Flüchtlinge dies Pärchen oft auf dem Viertel sichten.
@@ -2665,22 +2787,31 @@ Frau Ovsienko beschrieb Nancy und ihren Partner detailliert
 <p>
 Das schrecklichste ist, dass sie Hand in Hand spazieren.
 </p>
+</div>
+
 
 <h2>2.I.2026, Freitag</h2>
+<div style="color:blue">
 Das Geschäft, wo man Dateien ausdrucken kann, ist geschlossen.
 Ich besuchte die Sauna mit den Kopfschmerzen
 <p>
 Helga war online in der Nacht, aber das war nicht der Übergang zwischen den Jahren.
 Das kann als Bestätigung dienen, dass sie im Nachhinein guckt, ob sie jemand gratuliert hat.
 </p>
+</div>
+
 
 <h2>4.I.2026, Sonntag</h2>
+<div style="color:blue">
 Ich begleite Maja, obwohl sie sich letztes Mal sehr schlecht benahm.
 Ich gratulierte sie.
 Ich ging mit ihr zur Kirche nicht, obwohl sie möglicherweise darauf wartete.
 Ein Mittagsessen bei Fr. Valentina
+</div>
+
 
 <h2>5.I.2026, Montag</h2>
+<div style="color:blue">
 <p>
 Ich sendete die Boombox ab. Ich zahlte fast 10€ dafür.
 </p>
@@ -2692,8 +2823,11 @@ Nachdem ich das Klinikum besucht habe, unternahm ich eine Fahrt zum Bahnhof.
 Dort traf ich auf den Franzosen.
 Wir führten sogar einen Handschlag durch.
 </p>
+</div>
+
 
 <h2>6.I.2026, Dienstag</h2>
+<div style="color:blue">
 <p>
 Plötzlich kam eine große Überraschung: das Paket wurde nicht empfangen!
 Die erste meine Vermutung: Helga hat den Familienname des Absenders gelesen und die Annahme verweigert.
@@ -2707,28 +2841,32 @@ Die Verkäuferin sagte, nein, aber wir alle wissen, wie das Leben in Deutschland
 Alla kehrt von der Tafel zurück.
 Ich bin erfolgreich geschwommen.
 </p>
-Empört rief ich Nancy an. Aber ich ließ nur das Tonbahngerät meine Rede aufzeichnen
+Empört rief ich Nancy an. Aber ich ließ nur ihr "Tonbahngerät", ihren "Flugschreiber", meine Rede aufzeichnen
 <p>
-Ich unterbrach die Pause, die ich in Telegram mit Maja eingelegt seit 19.XII.2025 hatte
+Ich unterbrach die Pause, die ich in Telegram mit Maja seit 19.XII.2025 eingelegt hatte
 </p>
+</div>
+
 
 
 
 <h2>7.I.2026, Mittwoch</h2>
 Die Ferien sind vorbei.
 Aber der Lehrprozess sieht wirklich wie eine Selbstlernphase auf Steroiden.
+
 <table border="1">
 <tr><td>
 Die Prüfung:
 10:00 - 13:00
 IHK zu Coburg – Schloßplatz 5, 96450 Coburg
+<p>
 Die Kosten für die Übernachtung kann die AfA übernehmen!
+</p>
+
 </td></tr>
 </table>
 
-<p>
-"Welche primären Datentypen in C gibt es?"
-</p>
+
 
 <p>
 Hier befinden sich Testen:<br/>
@@ -2810,14 +2948,14 @@ Wieder diese sonderbare Reihenfolge, die während des Tests am 29.X.2025 mich ü
 </tr>
 <tr>
 <td>GROUP BY</td>
-<td>Gruppieren wir die Zeilen</td>
+<td>Gruppieren wir die Zeilen (ein Agregator soll vorhanden sein)</td>
 </tr>
 <tr>
 <td>HAVING</td>
 <td>Eine Bedingung</td>
 </tr>
 <tr>
-<td>SELECT</td>
+<td>SELECT (AS)</td>
 <td>Wählen wir die Spalten aus</td>
 </tr>
 <tr>
@@ -2830,22 +2968,28 @@ Wieder diese sonderbare Reihenfolge, die während des Tests am 29.X.2025 mich ü
 
 
 <h2>8.I.2026, Donnerstag</h2>
-<p>
+<p style="color:blue">
 Ich unterbrach das Fasten. Das Paket bleibt immer noch interessanterweise stecken.
 Jetzt ist sogar kein vermutliches Datum vorhanden (früher stand der Mittwoch geschrieben).
+</p>
 
 <h3>Der Test "Speicherverwaltung"</h3>
 
+<div style="border:3px solid blue">
 <p style="color:yellow">
 Variable Length Arrays (VLA) existieren nicht!
 </p>
 
 <p>
-Schreiben Sie den Befehl,
-wie Sie in einer Zeile mit einer einzigen Anweisung  mittels calloc den Zeiger arr auf ein Array von 25 dynamisch erzeugten Integer-Variablen zeigen lassen können.
-<pre>
-arr = calloc( 25, sizeof(*arr) )
-</pre>
+<ul>
+    <li>malloc</li>
+    <li>calloc
+        <pre>
+        arr = calloc( 25, sizeof(*arr) )
+        </pre>
+    </li>
+    <li>realloc</li>
+</ul>
 </p>
 
 <pre>
@@ -2856,20 +3000,11 @@ Ich entdeckte, dass irgendein Zufallsgenerator Zahlen in Aufgaben verändert, di
 (aber das Prinzip bleibt dasselbe):
 
 <pre>
-6,942 KB x 55106 = 382545852 B - das Komma!
+6,942 KB x 55106 = 382545852 B - das deutsche Komma! Aber es wird besser so antworten: 382545,852 B
 </pre>
 
-<p>
-178 x 4 B = 712 B 
-</p>
+soll sich daran erinnern, dass der Typ "long" 4 Bytes in Anspruch nimmt.
 
-<pre>
-4 B x ( 146 + 76 ) x 102 / 2 = 45288 B
-</pre>
-
-<p>
-GROUP_SIZE x ( 4 x 4 B + 2 B + 2 B ) x GROUPS = 55488 B - Man soll sich daran erinnern, dass der Typ "long" 4 Bytes in Anspruch nimmt.
-</p>
 
 <pre>
 void* dyn_mem(size_t groesse){
@@ -2877,7 +3012,11 @@ void* dyn_mem(size_t groesse){
 }
 </pre>
 
-<h2>Der Test "Python" ("Python und APIs"?)</h2>
+</div>
+
+
+
+<h3>Der Test "Python" ("Python und APIs"?)</h3>
 </p>
 Warum bildet man Mengen so:
 angriff = set(["Alex", "Ben", "Chris", "Daniel"])
@@ -2887,10 +3026,11 @@ Nicht "append", sondern "add", um ein Element der Menge
 hinzuzufügen
 </p>
 double existiert in Python nicht. Nur float.
-<p>
-Query-Parameter - nach dem Fragezeichen im Protokol GET
-</p>
 
+
+
+
+<div style="border:3px solid black">
 <pre>
 class Koordinate:
     def __init__(self,x,y):
@@ -2914,6 +3054,8 @@ class Koordinate:
     def y(self,y):
         self.__y=y
 </pre>
+</div>
+
 
 
 
@@ -2965,7 +3107,14 @@ for angreifer in angriff:
 <li>Schreiben von Logs in eine einzelne Datei. → Keine Parallelität notwendig</li>
 </ul>
 
-<p>
+
+
+<p style="border:3px solid green">
+Query-Parameter - nach dem Fragezeichen im Protokol GET
+</p>
+
+
+<div style="border:1px solid red"> 
 Welche der folgenden Programmierparadigmen unterstützt Python?
 <table border="1">
 <tr>
@@ -2985,8 +3134,16 @@ iterativ</td><td>Nein</td>
 <td>objektorientiert</td><td>Ja</td>
 </tr>
 </table>
+<p>
+"iterativ", "rekursiv" - das ist kein Paradigma sondern eine Art und Weise, Probleme zu lösen.
 </p>
+</div>
 
+
+
+
+
+<h3>GIT</h3>
 
 Bei der Arbeit mit Git werden mehrere Schritte nacheinander ausgeführt, um Änderungen am Code nachverfolgbar zu machen.
 Ordnen Sie die folgenden Schritte zu einem typischen Arbeitsablauf in eine sinnvolle Reihenfolge.
@@ -2998,6 +3155,12 @@ Ordnen Sie die folgenden Schritte zu einem typischen Arbeitsablauf in eine sinnv
 <li>Änderungen mit git commit -m "…" abschließen und geeignet kommentieren</li>
 <li>Lokale Commits in ein Remote-Repository hochladen (z.B. mit git push</li>
 </ol>
+
+
+
+<h3>Der Test "Softwarevalidierung und Test"</h3>
+
+<div style="background-color: gray">
 
 
 <p>
@@ -3050,9 +3213,7 @@ Um Lauzeitgeschwindigkeit zu verbessern, da sie nur die notwendigen Module nutzt
 </p>
 
 
-<h2>Der Test "Softwarevalidierung und Test" (mir ist, sie haben ihn nicht beendet)</h2>
 
-<div style="background-color: gray">
 <p>
 In vielen Python-Projekten wird eine Datei pyproject.toml verwendet.
 Welche der folgenden Aussagen beschreiben typische Einsatzmöglichkeiten dieser Datei?
@@ -3302,17 +3463,26 @@ int main()
 
 
 <p>
-Die Tafel. Roxolana sagte "Ach!"
+Die Tafel. Zwischen mir und Roxolana fand ein kurzes Gespräch statt,
+dessen Inhalt genau so wie bei dem Gespräch mit dem Franzosen am 5.I.2026 war.
+Aber Roxolana sagte "Ach!", als ob sie begriffen hat, nach wem ich Sehnsucht habe.
 </p>
 
 Mit Alexander stornierten wir den Vertrag, den seine Ehefrau mit der App "Moppla" hatte.
 Ich begleite Alexander.
+Zu Hause entdeckte ich, dass er mein neues Handy "geklaut" hat.
 
 
 <h2>10.I.2026, Samstag</h2>
-Meine Friseurin ist krank.
+Meine Friseurin ist krank. Mit ihrer Kollegin haben wir
+den Termin um 2 Wochen verschoben.
+<p>
 Es ergab sich, dass ich die Nummer des Hauses Nancys aufzuschreiben vergaß.
-Ich traf die Entscheidung, die Sendung zu wiederholen.
+Für mich war das wie ein Wind der Hoffnung, und
+ich traf die Entscheidung, die Sendung zu wiederholen.
+</p>
+
+
 Ich fahre nach Chemnitz, das Handy zu retten.
 Unterwegs erfahre ich das Ergebnis der Nachprüfung. Noch ein schmerzhafter Schlag.
 <p>
@@ -3674,13 +3844,9 @@ void revert(short V[], short R[])
 
 "Call by pointing" - eine Falle. Es existiert der Terminus "Call by reference"!
 
-<p>
-Achtung! Ich sehe, dass Max irgendeinen Code, wo nicht nur der kluge Pointer, sondern auch der Vektor erwähnt wird!
-Ich soll diese Phänomene mir unbedingt anschauen
-</p>
 
 
-<p>
+<p style="color:blue">
 Ich besuchte "Kaufland". Dort traf ich auf das Mädchen, das hier arbeitet.
 Aber ich verpasste den Moment, um mich nach ihrer Nummer zu erkundigen.
 </p>
@@ -3799,6 +3965,8 @@ Die Frage: kann ein Setter in C++ so die Felder initialisieren wie Konstruktor?
 Max sagt, nein.
 </p>
 
+
+<div style="color:blue">
 Heute fand ein Mittagsessen bei Frau Valentina statt.
 Deswegen schuf ich das Fasten ab.
 Frau Valentina bekam den Ausgleich ihrer Schulden.
@@ -3809,6 +3977,8 @@ Ich übergab meine Nummer.
 <p>
 Helga erschien am Abend.
 </p>
+</div>
+
 
 
 
@@ -3831,18 +4001,7 @@ begrüßte sie. Aber was machte sie auf der Arbeit? Heute ist ja Samstag!
 Den dritten Tag erscheint Helga in Telegram. Früher erschien sie lediglich 2 Tage hintereinander.
 </p>
 
-Das Thema "Projektmanagement" wird in der Prüfung vorhanden sein.
-<br/>
-<a href="https://lms.ng-engineering.academy/mod/quiz/view.php?id=269">https://lms.ng-engineering.academy/mod/quiz/view.php?id=269</a>
-<br/>
-Aber dieses Thema gibt nur 4%:
-<p>
-<img src="an_der_Weiterbildung.files/Noten.png"/>
-</p>
-1 Punkt ergibt ca. 0,56%.
-Das Minimum ist 90 Punkte.
-
-
+Das Thema "Projektmanagement" wird in der Prüfung vorhanden sein:
 <ol style="background-color:gray;">
 <li>
 Was beschreibt funktionale Anforderungen am besten?
@@ -4045,13 +4204,19 @@ Welches Dokument beschreibt die Anforderungen aus Sicht des Auftraggebers?
 </table>
 </li>
 </ol>
+Aber dieses Thema gibt nur 4%:
+<p>
+<img src="an_der_Weiterbildung.files/Noten.png"/>
+</p>
+1 Punkt ergibt ca. 0,56%.
+Das Minimum ist 90 Punkte.
 
 
 
 
 
 <h2>20.I.2026, Dienstag</h2>
-
+<div style="color:blue">
 <p>
 Vladimir-Gitarrist in Leipzig.
 Es sagt, dass ich abgenommen habe.
@@ -4063,16 +4228,26 @@ Aber als ich abends in Delitzsch war, entdeckte ich die Ursache.
 Heute, um 16:11 verweigerte sie Annahme meines Pakets!
 Sie ist aus der Ukraine zurück gekommen!
 </p>
+</div>
+
 
 
 <p>
 Systeme:
-<ul>
-    <li>"X"</li>
-    <li>"x"</li>
-    <li>"o"</li>
-    <li>"d"</li>
-</ul>
+<table border="1">
+    <tr>
+        <td>"X"</td><td rowspan="2">16 (das Hexadezimalsystem)</td>
+    </tr>
+    <tr>
+        <td>"x"</td>
+    </tr>
+    <tr>
+        <td>"o"</td><td>8 (das Oktalsystem)</td>
+    </tr>
+    <tr>
+        <td>"d"</td><td>10</td>
+    </tr>
+</table>
 
 "%*d" - * kann eine negative Zahl sein
 </p>
@@ -4092,7 +4267,27 @@ Falls einer Zeile der linken Tabelle nichts aud der rechten entspricht,
 stellt der Befehl "LEFT JOIN" einfach "NULL" gegen diese Zeile.
 </p>
 
+<p>
+Und eine Frage bleibt: "Was ist NULL in der Sprache SQL?"
+Warum gibt es den Unterschied zwischen der Prüfung
+"=NULL" und der Prüfung: "IS NULL"?
+Es sieht so aus, dass die Prüfung "=NULL" unkorrekt ist.
+</p>
 
+<div style="color:blue">
+In der Mittagspause besuchte ich den Reck.
+Ich begrüßte Maja und meine Nachbarin Nicole Unterwegs.
+
+
+<p>
+"Der Film erzählt die Geschichte zweier Teenager aus North Carolina."
+</p>
+Plötzlich gelang es mir, mich vom mündllichen Teil der Prüfung (10.II.2026) zu befreien.
+
+<p>
+Helga ist wieder online. 
+</p>
+</div>
 
 
 
