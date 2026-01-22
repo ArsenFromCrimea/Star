@@ -1252,23 +1252,7 @@ Mein Experiment zeigt, die Objekte, die einem Wert des primären Typs entspreche
 
 <h2>23.IX.2025, Dienstag</h2>
 Max erzählt etwas von "Hash" der Objekte.
-<p>
-4 Stufen der Sichtbarkeit für jedes Mitglied der Klasse:
-<table border="1">
-<tr>
-<td>public</td><td>+</td>
-</tr>
-<tr>
-<td>private</td><td>-</td>
-</tr>
-<tr>
-<td>protected</td><td>#</td>
-</tr>
-<tr bgcolor="yellow">
-<td>package</td><td>~</td>
-</tr>
-</table>
-</p>
+
 
 <p>
 Unsere Gruppe schrumpft langsam.
@@ -3332,13 +3316,13 @@ Welche Vorteile bietet die Verwendung von Funktionen im Code?
 </p>
 
 
-<p>
+<div style="border:1px solid black">
 Wozu dienen sogenannte Include-Guards (#ifndef/#define ... #endif) in Header-Dateien?
 <ul>
 <li>Durch Include Guards wird derselbe Code nicht mehrfach verarbeitet. Dies schützt vor Fehlern und beschleunigt das Kompilieren</li>
 <li>Sie verhindern, dass ein Header mehrfach eingebunden wird</li>
 </ul>
-</p>
+</div>
 
 
 <p>
@@ -3351,7 +3335,7 @@ Man muss beide Modul-Dateien in beliebiger Reihenfolge kompilieren und linken
 
 
 
-<pre>
+<pre style="border:3px solid blue">
 /**
  * @brief   Führt eine sequenzielle Suche in einem Array durch.
  *
@@ -3372,44 +3356,7 @@ int sequential_search(int numbers[], int size, int to_search)
 }
 </pre>
 
-<pre>
-short indexOfMinElement(short v[], short m, short n)
-{
-    if(m>n)
-       return -1;
-    short ergebnis=m;
-    for(short i=m+1;i&lt;=n;i++)
-        if(v[i]&lt;v[ergebnis])
-            ergebnis=i;
-    return ergebnis;    
-}
-</pre>
 
-<pre>
-void print_numbers(short numbers[]);
-void bubble_sort(short numbers[]);
-
-void print_numbers(short numbers[]){
-    for(int j=0;j&lt;NUMBER_COUNT;j++)
-        printf("%-2d",numbers[j]);
-    printf("\n");
-}
-
-void bubble_sort(short zahlen[]){
-    short vorlaeufig;
-    print_numbers(zahlen);
-    for(int maximum=NUMBER_COUNT-1;maximum&gt;1;maximum--){
-        for(int i=0;i&lt;maximum;i++){
-            if(zahlen[i]&gt;zahlen[i+1]){
-                vorlaeufig=zahlen[i];
-                zahlen[i]=zahlen[i+1];
-                zahlen[i+1]=vorlaeufig;
-                print_numbers(zahlen);
-            }
-        }
-    }
-}
-</pre>
 
 
 <pre>
@@ -3452,16 +3399,7 @@ void count_characters(const char* string, short(*char_count_array)[2]){
 }
 </pre>
 
-<pre>
-short fibonacci(short n)
-{
-    if(n==0)
-		return 0;
-	if(n==1)
-		return 1;
-	return fibonacci(n-2)+fibonacci(n-1);
-}
-</pre>
+
 </div>
 
 
@@ -3551,10 +3489,6 @@ Ich erfuhr, dass Erich von Däniken gestorben ist.
 
 <h2>14.I.2026, Mittwoch</h2>
 
-"package" - in Java, wenn nichts von "protected", "private", "public" steht.
-Ist sichtbar innerhalb des Pakets und nicht sichtbar für Klassen in anderen Paketen.
-
-
 <h3>OOP</h3>
 
 <div style="background-color: yellow;">
@@ -3621,7 +3555,24 @@ CPU führt Maschinenbefehle aus</td>
 <div style="border:3px solid blue">
 Es gibt so eine Falle:
 <p>
-Falls versteckte Tests fehlschlagen, prüfen Sie, ob alle Sichtbarkeiten (private, public, protected) gemäß dem Klassendiagramm korrekt gesetzt sind!
+Existieren versteckte Tests, ob alle Sichtbarkeiten gemäß dem Klassendiagramm korrekt gesetzt sind.
+</p>
+<p>
+4 Stufen der Sichtbarkeit für jedes Mitglied der Klasse:
+<table border="1">
+<tr>
+<td>public</td><td>+</td><td>überall</td>
+</tr>
+<tr>
+<td>private</td><td>-</td><td>nur innerhalb der Klasse</td>
+</tr>
+<tr>
+<td>protected</td><td>#</td><td>innerhalb des Pakets und für Kinder-Klassen in anderen Paketen</td>
+</tr>
+<tr bgcolor="gray">
+<td>package</td><td>~</td><td>innerhalb des Pakets und nicht sichtbar für Klassen in anderen Paketen</td>
+</tr>
+</table>
 </p>
 </div>
 
