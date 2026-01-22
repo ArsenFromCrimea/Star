@@ -1912,11 +1912,11 @@ Dieses Thema ist in der Nähe meines Strebens nach die perfekte Sprache...
 
 <h2>24.X.2025, Freitag</h2>
 
-
-
 <p style="color:blue">
 Die Fahrschule "Brode"
 </p>
+
+
 
 
 <h2>25.X.2025, Samstag</h2>
@@ -2314,9 +2314,9 @@ s.format("-","/") = "-AfI/Xing-"
 Mengen haben keine Duplikate.
 </p>
 
-<p>
+<pre>
 <b>untermenge</b> = [i for i in <b>menge</b> if i&gt;3]
-</p>
+</pre>
 
 a!=b!=c
 
@@ -2326,21 +2326,24 @@ for x,y in zip(vorspeise,hauptspeise):
 <p>
 global - für Variablen in Funktionen
 </p>
- 
+
+<div style="border:3px solid red">
 <p>
+<pre>
 f=lambda a:a+10
-f(3) - 13
+</pre>
+f(3) ergibt 13
 </p> 
 
- 
- g x,y:x*y
- 
+<pre>
+g=lambda x,y:x*y
+</pre>
+</div>
 
+f=filter(Bedingung, liste) Bedingung kann eine anonyme Funktion sein
+list(f)
 
- f=filter(Bedingung, liste) Bedingung kann eine anonyme Funktion sein
- list(f)
-
-<p>
+<p style="border:3px solid black">
 Es gibt so einen Befehl wie "pass" in Python! Das ist NOP!
 </p>
 
@@ -2351,8 +2354,13 @@ Ich versank in meinem Projekt und plötzlich bemerkte ich, dass sie sich
 mit einigen Aufgaben beschäftigen.
 
 <p>
-import meinebib
-help(meinebib)
+<pre>
+import <b>meine_Bibliothek</b>
+</pre>
+<pre>
+help(<b>meine_Bibliothek</b>)
+</pre>
+
 </p>
 
 
@@ -2482,7 +2490,7 @@ der sagt, durch welchen Wert wird das Ergebnis ersetzt, falls so ein Feld fehlt.
 
 
 <h2>6.XI.2025, Donnerstag</h2>
-Ich stand um 6:00, und
+Ich stand um 6:00 auf, und
 mir gelang es,
 post zu verstehen!
 
@@ -2595,6 +2603,7 @@ Plötzlich verriet Schwester Iris, dass Nancy eine Arbeit in Leipzig gefunden ha
 
 
 <h2>22.XI.2025, Samstag</h2>
+
 <div style="color:blue">
 <p>
 Wegen der gestrigen Neuigkeit hörte ich auf, den Franzosen als das Symbol meines Desasters anzusehen.
@@ -2602,7 +2611,6 @@ Definitiv arbeitet sie in einem Restaurant, denke ich.
 Ich fühle eine Scham: sie hat mich überlolt!
 Ich sendete ihr eine Kurzmitteilung.
 </p>
-
 Der Geburtstag von Tante Irene.
 Ihre Tochter ist schön.
 <p>
@@ -2875,9 +2883,12 @@ Aber der Lehrprozess sieht wirklich wie eine Selbstlernphase auf Steroiden.
 
 <table border="1">
 <tr><td>
-Die Prüfung:
-10:00 - 13:00
-IHK zu Coburg – Schloßplatz 5, 96450 Coburg
+Die Prüfung:<br/>
+10:00 - 13:00<br/>
+Schloßplatz 5, 96450 Coburg
+<br/>
+Die Organisation heißt
+<b>IHK zu Coburg</b> 
 <p>
 Die Kosten für die Übernachtung kann die AfA übernehmen!
 </p>
@@ -3002,12 +3013,20 @@ Variable Length Arrays (VLA) existieren nicht!
 <p>
 <ul>
     <li>malloc</li>
+        <pre>
+        arr = calloc( 1*sizeof(*arr) )
+        </pre>
+        
     <li>calloc
         <pre>
         arr = calloc( 25, sizeof(*arr) )
         </pre>
     </li>
-    <li>realloc</li>
+    <li>realloc
+        <pre>
+        arr = calloc( arr, 1000*sizeof(*arr) )
+        </pre>
+    </li>
 </ul>
 </p>
 
@@ -3022,7 +3041,7 @@ Ich entdeckte, dass irgendein Zufallsgenerator Zahlen in Aufgaben verändert, di
 6,942 KB x 55106 = 382545852 B - das deutsche Komma! Aber es wird besser so antworten: 382545,852 B
 </pre>
 
-soll sich daran erinnern, dass der Typ "long" 4 Bytes in Anspruch nimmt.
+Wir sollen uns daran erinnern, dass der Typ "long" 4 Bytes in Anspruch nimmt.
 
 
 <pre>
@@ -3293,9 +3312,12 @@ Welche der folgenden Aussagen beschreibt Test-Driven Development (TDD) am besten
 
 
 <h2>9.I.2026, Freitag</h2>
+<div style="color:blue">
 Es existieren jetgetriebene Hubschrauber.
 Kein Heckrotor ist zum Ausgleich des Drehmoments erforderlich,
 da kein Drehmoment über die Welle übertragen wurde
+</div>
+
 
 <h2>Der Test "Prozedurale Programmierung"</h2>
 
@@ -3444,8 +3466,9 @@ short fibonacci(short n)
 
 
 
-<h2>Der Test "Grundlagen der Programmierung"</h2>
-<div style="background-color: brown">
+<h3>Der Test "Grundlagen der Programmierung"</h3>
+<div style="background-color: yellow">
+Die Funktion, die prüft, ob die eingegebene Zahl die Ziffer 7 enthielt: 
 <pre>
 int ergebnis(int zahl){
     int ziffer;
@@ -3457,30 +3480,19 @@ int ergebnis(int zahl){
     }while(zahl>0);
     return 0;
 }
+</pre>
 
-int main()
-{   
-    //int zeilen;
-    //scanf("%d",&zeilen);
-    int i,j;
-    int zahl;
-    int breite=10;
-    for(i=0;i&lt;MAX_ROWS;i++){
-       for(j=0;j&lt;breite;j++){
-          zahl=i*breite+j+1;
-          if(ergebnis(zahl)||zahl%7==0)
-             printf("%-5s","...");
-          else
-             printf("%-5d",zahl);
-       }
-       printf("\n");
-    }
-    return 0;
+Eine Aufgabe, wo man das Können, mit der Logik umzugehen, auf die Probe stellt:
+
+<pre>
+short is_leap_year(short year)
+{
+    return (year%4==0&amp;&amp;year%100>0) || (year%400==0); 
 }
 </pre>
 </div>
 
-
+<div style="color:blue">
 <p>
 Die Tafel. Zwischen mir und Roxolana fand ein kurzes Gespräch statt,
 dessen Inhalt genau so wie bei dem Gespräch mit dem Franzosen am 5.I.2026 war.
@@ -3490,9 +3502,12 @@ Aber Roxolana sagte "Ach!", als ob sie begriffen hat, nach wem ich Sehnsucht hab
 Mit Alexander stornierten wir den Vertrag, den seine Ehefrau mit der App "Moppla" hatte.
 Ich begleite Alexander.
 Zu Hause entdeckte ich, dass er mein neues Handy "geklaut" hat.
+</div>
+
 
 
 <h2>10.I.2026, Samstag</h2>
+<div style="color:blue">
 Meine Friseurin ist krank. Mit ihrer Kollegin haben wir
 den Termin um 2 Wochen verschoben.
 <p>
@@ -3508,9 +3523,12 @@ Unterwegs erfahre ich das Ergebnis der Nachprüfung. Noch ein schmerzhafter Schl
 Ehefrau Alexanders weiß nicht, wie man sich mit der AfA verbindet
 </p>
 Der Tannenbaum im Laden "Saturn"
+</div>
+
 
 
 <h2>11.I.2026, Sonntag</h2>
+<div style="color:blue">
 Wegen des Schnees kann man Fahrrad nicht fahren.
 Ich begleite Maja, aber ihr Zustand ist noch schlimmer, als während des Fastens:
 sie steckte den Kopfhörer in ihre Ohren gerade vom Anfang an.
@@ -3519,11 +3537,16 @@ Am Bayerischen Bahnhof stieg ich als erster aus, aber guckte zurück nicht.
 <p>
 Abends schrieb ich Maja an, aber mir gelang es nicht, sie zu einem Gespräch zu provozieren
 </p>
+</div>
+
 
 
 <h2>12.I.2026, Montag</h2>
+<div style="color:blue">
 Ich fahre wieder nach Chemnitz.
 Ich erfuhr, dass Erich von Däniken gestorben ist.
+</div>
+
 
 
 <h2>14.I.2026, Mittwoch</h2>
@@ -3535,61 +3558,7 @@ Ist sichtbar innerhalb des Pakets und nicht sichtbar für Klassen in anderen Pak
 <h3>OOP</h3>
 
 <div style="background-color: yellow;">
-<pre>
-public Person(String name){
-        this.name=name;
-}
-</pre>
 
-
-<pre>
-abstract class Sensor{
-    private byte adresse;
-    public Sensor(byte adresse){
-        this.adresse=adresse;
-    }
-    public float readSensorValue(){
-        return 0;
-    }
-    public byte getAddress(){
-        return adresse;
-    }
-}
-
-class TemperatureSensor extends Sensor{
-    public TemperatureSensor(byte adresse){
-        super(adresse);
-    }
-    public float readSensorValue(){
-        byte[] b=I2C.readBus(getAddress());
-        return kelvinToCelsius((b[0]+b[1]+b[2]+b[3])*2);
-    }
-    private static float kelvinToCelsius(float T){
-        return T-273.15f;
-    }
-}
-
-class PressureSensor extends Sensor{
-    public PressureSensor(byte adresse){
-        super(adresse);
-    }
-    public float readSensorValue(){
-        byte[] b=I2C.readBus(getAddress());
-        return b[0]*b[1]/5;
-    }
-    
-}
-</pre>
-
-
-<pre>
-void Konto::einzahlen(int beitrag){
-    if(beitrag&lt;0)
-        cout&lt;&lt;"Fehler: Betrag muss &gt;= 0 sein."&lt;&lt;endl;
-    else
-        saldo+=beitrag;
-}
-</pre>
 
 <pre>
 void Logger::log(const std::string& msg, int n){
@@ -3620,113 +3589,46 @@ CPU führt Maschinenbefehle aus</td>
 </tr>
 </table>
 
-
-<pre>
-class Circle{
-    public:
-    Circle(float r){
-        this->r=1;
-        setRadius(r);
-    }
-    Circle(){
-        this->r=1;
-    }
-    void setRadius(float r){
-        if(r&gt;0)
-            this->r=r;
-        else
-            cout&lt;&lt;"Der Radius muss größer als 0 sein."&lt;&lt;endl;
-    }
-    float getRadius(){
-        return r;
-    }
-    float area(){
-        return PI*r*r;
-    }
-    private:
-    float r;
-};
-</pre>
-
+<ul>
+<li>std::string</li>
+<li>std::cout</li>
+<li>std::endl</li>
+<li>std::make_unique</li>
+</ul>
 
 <table border="1">
 <tr>
 <td>
 <pre>
-u_ptr = std::make_unique &lt; std::string &gt; ( "Hallo" )
+    Circle(float r){
+        this->r=1;
+    }
+</pre>
+</td>
+<td>
+<pre>
+    Circle(float r):r(r){
+    }
 </pre>
 </td>
 </tr>
 </table>
 
 
+
+
+
+<div style="border:3px solid blue">
 Es gibt so eine Falle:
 <p>
 Falls versteckte Tests fehlschlagen, prüfen Sie, ob alle Sichtbarkeiten (private, public, protected) gemäß dem Klassendiagramm korrekt gesetzt sind!
 </p>
-
-<pre>
-int main()
-{
-    /* Hier Variablendeklarationen
-     */
-    float a,b,c,D,x1,x2;
-    
-    /* ********** */
-    /* Die scanf()-Befehle werden automatisch vom Test ausgeführt
-     */
-    scanf("%f", &amp;a);
-    scanf("%f", &amp;b);
-    scanf("%f", &amp;c);
-    /* ********** */
-    
-    /* Hier Berechnung
-     */
-    D=b*b-4*a*c;
-    if(D&lt;0)
-        printf("keine reelle Lösung");
-    else{
-        printf("D = %.2f\n",D);
-        x1=(-b+sqrt(D))/(2*a);   
-        if(D==0)
-            printf("x1,2 = %.2f",x1);
-        else{
-            x2=(-b-sqrt(D))/(2*a);
-            printf("x1 = %.2f\n",x1);
-            printf("x2 = %.2f",x2);
-        }
-    }
-    printf("\n");
-    return 0;
-}
-</pre>
+</div>
 
 
-<pre>
-int main()
-{
-    int zahl;
-    scanf("%d",&zahl);
-    if(zahl&lt;3||zahl&gt;45){
-        printf("Fehler\n");
-        return 0;
-    }
-    if(zahl%2==0)
-        zahl++;
-    for(int i=0;i&lt;(zahl+1)/2;i++){
-        for(int j=0;j&lt;=(zahl+1)/2-1+i;j++){
-            if(i+j&gt;=zahl/2)
-                printf("*");
-            else
-                printf(" ");
-        }
-        printf("\n");
-    }
-    return 0;
-}
-</pre>
 
-<pre>
+
+<pre style="border:3px solid black">
 void printer(char* name,short zahl){
     printf("%s   = %-6d  (DEZ)\n",name,zahl);
     printf("%s   = %-6ho  (OKT)\n",name,zahl);
@@ -3756,14 +3658,10 @@ int main()
 }
 </pre>
 
-<pre>
-unsigned char is_even(long zahl){
-    return zahl%2==0;
-}
-</pre>
 
 
-<pre>
+
+<pre style="border:3px solid blue">
 void draw_line(int zahl, int spalten){
     for(int i=0;i&lt;zahl;i++){
         printf("-");
@@ -3810,55 +3708,6 @@ int main()
 
 <h2>15.I.2026, Donnerstag</h2>
 
-<div style="background-color: brown">
-Eine Aufgabe, wo man das Phänomen "switch" prüft:
-
-<pre>
-const char* get_grade_as_string(uint8_t grade)
-{
-    switch(grade){
-        case 1: return "sehr gut";
-        case 2: return "gut";
-        case 3: return "befriedigend";
-        case 4: return "ausreichend";
-        case 5: return "mangelhaft";
-    }
-    return "Note existiert nicht";
-}
-</pre>
-
-Eine Aufgabe, wo man das Phänomen "swap" prüft:
-
-<pre>
-void swap (short* a, short* b){
-    short temp=*a;
-    *a=*b;
-    *b=temp;
-}
-</pre>
-Eine Aufgabe, wo man das Können, mit der Logik umzugehen, auf die Probe stellt:
-
-<pre>
-short is_leap_year(short year)
-{
-    return (year%4==0&amp;&amp;year%100>0) || (year%400==0); 
-}
-</pre>
-Eine Aufgabe, wo man ein Array auf den Kopf stellen soll:
-<pre>
-void revert(short V[], short R[])
-{
-    int laenge=10;
-    for(int i=0;i&lt;laenge;i++)
-        R[i]=V[laenge-1-i];
-}
-</pre>
-</div>
-
-
-
-
-
 
 
 "Call by pointing" - eine Falle. Es existiert der Terminus "Call by reference"!
@@ -3869,6 +3718,8 @@ void revert(short V[], short R[])
 Ich besuchte "Kaufland". Dort traf ich auf das Mädchen, das hier arbeitet.
 Aber ich verpasste den Moment, um mich nach ihrer Nummer zu erkundigen.
 </p>
+
+
 
 <h2>16.I.2026, Freitag</h2>
 
@@ -3905,7 +3756,7 @@ for (int num : ergebnis) {
 </li>
 </ul>
 
-<h3>2. Kluger Zeiger</h3>
+<h3>2. Intelligenter Zeiger</h3>
 <ul>
 <li>
 Die Bibliothek:
@@ -4309,6 +4160,8 @@ Helga ist wieder online.
 </div>
 
 
+<h2>22.I.2026, Donnerstag</h2>
+Bayern
 
 </body>
 </html>
